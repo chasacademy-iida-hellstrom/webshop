@@ -9,6 +9,15 @@ import OrderConfirmation from "./components/OrderConfirmation";
 const AppRouter = () => {
   return (
     <Router>
+      <nav>
+        <ul>
+          <li><a href="/">Hem</a></li>
+          <li><a href="/about">Om oss</a></li>
+          <li><a href="/products">Produkter</a></li>
+          <li><a href="/cart">Kundvagn</a></li>
+        </ul>
+      </nav>
+
       <Routes>
         <Route path="/" element={<Home />} />
         <Route path="/about" element={<About />} />

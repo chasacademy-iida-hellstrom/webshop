@@ -1,7 +1,12 @@
+import CartProvider from "./context/CartContext";
 import AppRouter from "./Router";
 
 const App = () => {
-  return <AppRouter />;
+  return (
+    <CartProvider>
+      <AppRouter />
+    </CartProvider>
+  );
 };
 
 export default App;
