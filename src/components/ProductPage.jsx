@@ -1,26 +1,20 @@
-import { useParams } from 'react-router-dom'
-import { useState, useEffect } from 'react'
+import { useParams } from "react-router-dom";
+import useFetchProducts from "../hooks/useFetchProducts";
 
 const ProductPage = () => {
-  const { id } = useParams() // Hämta produktens ID från URL:en
-  const [product, setProduct] = useState(null)
+  const { id } = useParams();
+  const { products } = useFetchProducts();
+  const product = products.find((p) => p.id.toString() === id);
 
-  useEffect(() => {
-    fetch(`https://fakestoreapi.com/products/${id}`)
-      .then((res) => res.json())
-      .then((data) => setProduct(data))
-  }, [id])
-
-  if (!product) return <p>Laddar...</p>
+  if (!product) return <p>Produkten hittades inte.</p>;
 
   return (
     <div>
-      <h1>{product.title}</h1>
+      <h2>{product.name}</h2>
       <p>{product.description}</p>
-      <p>{product.price} kr</p>
-      <img src={product.image} alt={product.title} width="200" />
+      <p>Pris: {product.price} SEK</p>
     </div>
-  )
-}
+  );
+};
 
-export default ProductPage
+export default ProductPage;
