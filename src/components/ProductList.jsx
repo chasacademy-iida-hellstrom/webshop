@@ -1,30 +1,24 @@
-import { useState, useEffect } from 'react'
-import { Link } from 'react-router-dom'
+import useFetchProducts from "../hooks/useFetchProducts";
+import { Link } from "react-router-dom";
 
 const ProductList = () => {
-  const [products, setProducts] = useState([])
+  const { products, loading, error } = useFetchProducts();
 
-  useEffect(() => {
-    fetch('https://fakestoreapi.com/products') // Hämta produkter från API:et
-      .then((res) => res.json())
-      .then((data) => setProducts(data))
-  }, [])
+  if (loading) return <p>Laddar produkter...</p>;
+  if (error) return <p>Ett fel uppstod: {error}</p>;
 
   return (
     <div>
-      <h1>Produkter</h1>
+      <h2>Produkter</h2>
       <ul>
         {products.map((product) => (
           <li key={product.id}>
-            <Link to={`/product/${product.id}`}>
-              <h3>{product.title}</h3>
-            </Link>
-            <p>{product.price} kr</p>
+            <Link to={`/products/${product.id}`}>{product.name}</Link>
           </li>
         ))}
       </ul>
     </div>
-  )
-}
+  );
+};
 
-export default ProductList
+export default ProductList;
