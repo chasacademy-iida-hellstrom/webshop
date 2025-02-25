@@ -1,14 +1,7 @@
-import { BrowserRouter as Router, Routes, Route } from 'react-router-dom'
-import ProductList from './components/ProductList'
+import AppRouter from "./Router";
 
-function App() {
-  return (
-    <Router>
-      <Routes>
-        <Route path="/" element={<ProductList />} />
-      </Routes>
-    </Router>
-  )
-}
+const App = () => {
+  return <AppRouter />;
+};
 
-export default App
+export default App;
