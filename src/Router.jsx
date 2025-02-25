@@ -1,22 +1,21 @@
-import { BrowserRouter as Router, Routes, Route, Link } from "react-router-dom";
+import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
 import Home from "./pages/Home";
 import About from "./pages/About";
-import ProductList from "./components/ProductList"; 
-import ProductPage from "./pages/ProductPage";  
+import ProductList from "./components/ProductList";
+import ProductPage from "./components/ProductPage";
+import Cart from "./components/Cart";
+import OrderConfirmation from "./components/OrderConfirmation";
 
 const AppRouter = () => {
   return (
     <Router>
-      <nav>
-        <Link to="/">Hem</Link>
-        <Link to="/about">Om oss</Link>
-        <Link to="/products">Produkter</Link>  
-      </nav>
       <Routes>
         <Route path="/" element={<Home />} />
         <Route path="/about" element={<About />} />
-        <Route path="/products" element={<ProductList />} />  
-        <Route path="/product/:id" element={<ProductPage />} />  
+        <Route path="/products" element={<ProductList />} />
+        <Route path="/products/:id" element={<ProductPage />} />
+        <Route path="/cart" element={<Cart />} />
+        <Route path="/order-confirmation" element={<OrderConfirmation />} />
       </Routes>
     </Router>
   );
