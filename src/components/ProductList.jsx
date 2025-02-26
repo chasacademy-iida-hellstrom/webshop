@@ -1,5 +1,5 @@
 import useFetchProducts from "../hooks/FetchProducts";
-import { Link } from "react-router-dom";
+import ProductCard from "./ProductCard";
 
 const ProductList = () => {
   const { products, loading, error } = useFetchProducts();
@@ -15,14 +15,9 @@ const ProductList = () => {
       {products.length === 0 ? ( 
         <p>Inga produkter hittades.</p>
       ) : (
-        <ul>
+        <ul className="product-list">
           {products.map((product) => (
-            <li key={product.id}>
-              <Link to={`/products/${product.id}`}>
-                <img src={product.image} alt={product.title} width="50" />
-                <p>{product.title}</p>
-              </Link>
-            </li>
+            <ProductCard product={product} key={product.id} />
           ))}
         </ul>
       )}
