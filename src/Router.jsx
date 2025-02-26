@@ -17,21 +17,7 @@ const AppRouter = () => {
           <li><a href="/products">Produkter</a></li>
           <li><a href="/cart">Kundvagn</a></li>
 
-          <li>
-                    <MdOutlineSearch className="navIcons" />
-                  </li>
-                  <li>
-                    <FiHome className="navIcons" />
-                  </li>
-                  <li>
-                    <LuAlignJustify className="navIcons" />
-                  </li>
-                  <li>
-                    <FaRegHeart className="navIcons" />
-                  </li>
-                  <li>
-                    <HiOutlineShoppingBag className="navIcons" />
-                  </li>
+        
         </ul>
       </nav>
 
