@@ -5,6 +5,7 @@ import ProductList from "./components/ProductList";
 import ProductPage from "./components/ProductPage";
 import Cart from "./components/Cart";
 import OrderConfirmation from "./components/OrderConfirmation";
+import Navbar from "./components/Navbar";
 
 const AppRouter = () => {
   return (
@@ -26,6 +27,8 @@ const AppRouter = () => {
         <Route path="/cart" element={<Cart />} />
         <Route path="/order-confirmation" element={<OrderConfirmation />} />
       </Routes>
+
+      <Navbar />
     </Router>
   );
 };
