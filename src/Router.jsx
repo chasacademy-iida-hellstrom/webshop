@@ -16,11 +16,8 @@ const AppRouter = () => {
           <li><a href="/about">Om oss</a></li>
           <li><a href="/products">Produkter</a></li>
           <li><a href="/cart">Kundvagn</a></li>
-
-        
         </ul>
       </nav>
-
 
       <Routes>
         <Route path="/" element={<Home />} />
@@ -30,7 +27,8 @@ const AppRouter = () => {
         <Route path="/cart" element={<Cart />} />
         <Route path="/order-confirmation" element={<OrderConfirmation />} />
       </Routes>
-            <Navbar />
+
+      <Navbar />
     </Router>
   );
 };
