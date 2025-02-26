@@ -24,12 +24,14 @@ ul {
   background-color: #fff;
   display: flex;
   flex-direction: column;
-  align-items: center;
 }
 
 .product-link {
   text-decoration: none;
   color: #333;
+  display: flex;
+  flex-direction: column;
+  gap: 2rem;
 }
 
 .favorite-button {
@@ -49,4 +51,19 @@ ul {
 .image-container img {
   max-width: 100%;
   max-height: 100%;
+}
+
+@media (min-width: 768px) {
+  .product-list {
+    flex-direction: row;
+    flex-wrap: wrap;
+    justify-content: space-evenly;
+  }
+
+  .product-card {
+    width: 300px;/* Adjust width to make the cards wider */
+    height: 550px;/* Adjust height to make the cards taller */
+    margin: 1rem;
+    padding: 1rem;
+  }
 }
