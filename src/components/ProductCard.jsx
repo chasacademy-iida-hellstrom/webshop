@@ -13,7 +13,7 @@ const ProductCard = ({ product }) => {
     <li className="product-card" key={product.id}>
       <Link to={`/products/${product.id}`} className="product-link">
         <div className="image-container">
-          <img src={product.image} alt={product.title} className="centered-image" />
+          <img src={product.image} alt={product.title} />
         </div>
         <div className="product-info">
           <p>{product.title}</p>
