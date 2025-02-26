@@ -163,14 +163,5 @@ ul {
     flex-direction: row;
   }
 
-  .product-card-details-rowreverse {
-    display: flex;
-    flex-direction: row-reverse;
-  }
 
-  .product-card-details-column {
-    display: flex;
-    flex-direction: column;
-    gap: 1rem;
-  }
 }
