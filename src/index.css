@@ -159,10 +159,5 @@ ul {
     padding: 1rem;
   }
 
-  .product-card-details {
-    display: flex;
-    flex-direction: row;
-  }
-
 
 }
