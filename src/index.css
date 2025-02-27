@@ -16,7 +16,7 @@ main {
   flex-grow: 1;
 }
 
-/* Navbar */
+/* ------- NAVBAR -------- */
 .navbar {
   position: fixed;
   bottom: 0;
@@ -50,7 +50,7 @@ ul {
   padding: 0;
 }
 
-/* Product List */
+/* ------- PRODUCT LIST -------- */
 .product-list {
   display: flex;
   flex-direction: column;
@@ -110,7 +110,7 @@ ul {
   object-fit: cover;
 }
 
-/* Product Card Details */
+/* ------- PRODUCT CARD DETAILS -------- */
 .product-card-details {
   display: flex;
   flex-direction: column;
@@ -137,7 +137,45 @@ ul {
   width: 100%;
 }
 
-/* Add to Cart Button */
+/* ------- MODAL / ORDERBEKRÄFTELSE -------- */
+.modal {
+  display: block; /* Modal är synlig när isModalOpen är true */
+  position: fixed;
+  z-index: 1;
+  padding-top: 100px;
+  left: 0;
+  top: 0;
+  width: 100%;
+  height: 100%;
+  overflow: auto;
+  background-color: rgba(0, 0, 0, 0.4);
+}
+
+.modal-content {
+  background-color: #fefefe;
+  margin: auto;
+  padding: 20px;
+  border: 1px solid #888;
+  width: 80%;
+  max-width: 600px;
+  text-align: center;
+}
+
+.close {
+  color: #aaaaaa;
+  float: right;
+  font-size: 28px;
+  font-weight: bold;
+}
+
+.close:hover,
+.close:focus {
+  color: #000;
+  text-decoration: none;
+  cursor: pointer;
+}
+
+/* ------- ADD TO CART BUTTON -------- */
 .add-button,
 .add-to-cart-button {
   background-color: #333;
@@ -161,7 +199,7 @@ ul {
   background-color: #e68900;
 }
 
-/* Cart */
+/* ------- CART -------- */
 .cart-link {
   position: relative;
   text-decoration: none;
@@ -180,7 +218,7 @@ ul {
   padding: 4px 7px;
 }
 
-/* Swiper */
+/* ------- SWIPER -------- */
 .swiper {
   display: flex;
   justify-content: center;
@@ -195,7 +233,7 @@ ul {
   text-align: center;
 }
 
-/* Responsive Design */
+/* ------- RESPONSIVE DESIGN -------- */
 @media (min-width: 768px) {
   .product-list {
     flex-direction: row;
