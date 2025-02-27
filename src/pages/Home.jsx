@@ -1,20 +1,16 @@
-import React from "react";
-import Header from "../components/Header";
+import CategoriesBar from "../components/CategoriesBar";
 import Footer from "../components/Footer";
-import Carousel from "../components/Carousel";
+import LatestProducts from "../components/LatestProducts";
 
 const Home = () => {
-    return (
-      <div>
-        <Header />
-        <main className="p-4 bg-gray-100">
-          <h1 className="text-xl font-bold text-center">Nyheter</h1>
-          <Carousel /> {/* Nyhetskarusellen ska ligga här */}
-        </main>
-        <Footer />
-      </div>
-    );
-  };
-  
-  export default Home;
-  
+  return (
+    <>
+      <h1>Hem</h1>
+      <CategoriesBar />
+      <LatestProducts />
+      <Footer />
+    </>
+  );
+};
+
+export default Home;
