@@ -11,6 +11,12 @@ const useCart = () => {
         window.dispatchEvent(new Event("cartUpdated"));
     }, [cart]); // ✅ Uppdatera bara när cart ändras, inte vid varje sidladdning
 
+    const updateCart = (newCart) => {
+        setCart(newCart);
+        localStorage.setItem("cart", JSON.stringify(newCart));
+        window.dispatchEvent(new Event("cartUpdated"));
+    };
+
     const addToCart = (product) => {
         setCart(prevCart => {
             let updatedCart = prevCart.map(item =>

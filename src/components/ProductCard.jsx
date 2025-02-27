@@ -1,8 +1,8 @@
 import { useState } from "react";
 import { Link } from "react-router-dom";
 import { FaHeart, FaRegHeart } from "react-icons/fa";
+import PropTypes from "prop-types"; 
 import useCart from "../hooks/useCart"; 
-import PropTypes from 'prop-types';
 
 const ProductCard = ({ product }) => {
   const [isFavorite, setIsFavorite] = useState(false);
@@ -32,7 +32,7 @@ const ProductCard = ({ product }) => {
         className="add-to-cart-button" 
         onClick={(e) => { 
           e.stopPropagation();
-          addToCart(product); // ✅ Tar bort onödig event-hantering
+          addToCart(product);
         }}
       >
         Lägg till i kundvagn
@@ -41,8 +41,7 @@ const ProductCard = ({ product }) => {
   );
 };
 
-export default ProductCard;
-
+// ✅ Lägg till prop-validering
 ProductCard.propTypes = {
   product: PropTypes.shape({
     id: PropTypes.number.isRequired,
@@ -51,3 +50,5 @@ ProductCard.propTypes = {
     price: PropTypes.number.isRequired,
   }).isRequired,
 };
+
+export default ProductCard;
