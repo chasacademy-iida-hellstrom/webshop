@@ -1,6 +1,6 @@
 import { useParams } from "react-router-dom";
 import useFetchProducts from "../hooks/FetchProducts";
-import useCart from "../context/useCart";
+import useCart from "../hooks/useCart";
 import { FaHeart, FaRegHeart } from "react-icons/fa"; // Import icons
 import { useState } from "react"; // Import useState
 
