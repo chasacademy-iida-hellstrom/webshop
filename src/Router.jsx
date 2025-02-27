@@ -6,19 +6,29 @@ import ProductPage from "./components/ProductPage";
 import Cart from "./components/Cart";
 import OrderConfirmation from "./components/OrderConfirmation";
 import Navbar from "./components/Navbar";
+import CategoriesBar from "./components/CategoriesBar";
 
 const AppRouter = () => {
   return (
     <Router>
       <nav>
         <ul>
-          <li><a href="/">Hem</a></li>
-          <li><a href="/about">Om oss</a></li>
-          <li><a href="/products">Produkter</a></li>
-          <li><a href="/cart">Kundvagn</a></li>
+          <li>
+            <a href="/">Hem</a>
+          </li>
+          <li>
+            <a href="/about">Om oss</a>
+          </li>
+          <li>
+            <a href="/products">Produkter</a>
+          </li>
+          <li>
+            <a href="/cart">Kundvagn</a>
+          </li>
         </ul>
       </nav>
 
+      {location.pathname.startsWith("/products") && <CategoriesBar />}
       <Routes>
         <Route path="/" element={<Home />} />
         <Route path="/about" element={<About />} />
