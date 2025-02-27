@@ -1,9 +1,13 @@
+:root {
+  --swiper-theme-color: #433f3f;
+}
+
 html,
 body {
   height: 100%;
   margin: 0;
   padding: 0;
-  background-color: #F0EADC;
+  background-color: #f0eadc;
   display: flex;
   flex-direction: column;
 }
@@ -143,7 +147,19 @@ ul {
   justify-content: space-between;
   width: 100%;
 }
+.swiper {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: 100%;
+}
 
+.swiper-slide {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  text-align: center;
+}
 
 @media (min-width: 768px) {
   .product-list {
@@ -158,6 +174,4 @@ ul {
     margin: 1rem;
     padding: 1rem;
   }
-
-
 }
