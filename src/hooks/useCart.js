@@ -1,12 +1,15 @@
 import { useState, useEffect } from "react";
 
 const useCart = () => {
-    const [cart, setCart] = useState([]);
+    const [cart, setCart] = useState(() => {
+        // ✅ Hämta cart från localStorage ENDAST vid start (förhindrar dubbeluppladdning)
+        return JSON.parse(localStorage.getItem("cart")) || [];
+    });
 
     useEffect(() => {
-        const storedCart = JSON.parse(localStorage.getItem("cart")) || [];
-        setCart(storedCart);
-    }, []);
+        localStorage.setItem("cart", JSON.stringify(cart));
+        window.dispatchEvent(new Event("cartUpdated"));
+    }, [cart]); // ✅ Uppdatera bara när cart ändras, inte vid varje sidladdning
 
     const updateCart = (newCart) => {
         setCart(newCart);
@@ -15,35 +18,32 @@ const useCart = () => {
     };
 
     const addToCart = (product) => {
-        let updatedCart = [...cart];
-        const existingProduct = updatedCart.find(item => item.id === product.id);
+        setCart(prevCart => {
+            let updatedCart = prevCart.map(item =>
+                item.id === product.id ? { ...item, quantity: item.quantity + 1 } : item
+            );
 
-        if (existingProduct) {
-            existingProduct.quantity += 1;
-        } else {
-            updatedCart.push({ ...product, quantity: 1 });
-        }
+            if (!prevCart.some(item => item.id === product.id)) {
+                updatedCart = [...prevCart, { ...product, quantity: 1 }];
+            }
 
-        updateCart(updatedCart);
+            return updatedCart;
+        });
     };
 
     const removeFromCart = (id) => {
-        const updatedCart = cart.filter(item => item.id !== id);
-        updateCart(updatedCart);
+        setCart(prevCart => prevCart.filter(item => item.id !== id));
     };
 
-    
     const updateQuantity = (id, newQuantity) => {
-        if (newQuantity <= 0) {
-            removeFromCart(id);
-            return;
-        }
-        
-        const updatedCart = cart.map(item =>
-            item.id === id ? { ...item, quantity: newQuantity } : item
-        );
-
-        updateCart(updatedCart);
+        setCart(prevCart => {
+            if (newQuantity <= 0) {
+                return prevCart.filter(item => item.id !== id);
+            }
+            return prevCart.map(item =>
+                item.id === id ? { ...item, quantity: newQuantity } : item
+            );
+        });
     };
 
     const getTotalPrice = () => {
