@@ -1,0 +1,9 @@
+.slick-slider {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+.slick-slider img {
+    max-height: 300px;
+    object-fit: contain;
+}
