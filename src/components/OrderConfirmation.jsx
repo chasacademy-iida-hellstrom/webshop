@@ -1,7 +1,7 @@
-import React, { useState } from "react";
+import { useState } from "react";
 
 const OrderConfirmation = () => {
-  const [isModalOpen, setIsModalOpen] = useState(false); 
+  const [isModalOpen, setIsModalOpen] = useState(false);
 
   const openModal = () => {
     setIsModalOpen(true);
