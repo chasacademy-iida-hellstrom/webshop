@@ -1,7 +1,6 @@
 import { FaFacebook, FaInstagram, FaTwitter } from "react-icons/fa";
 
 const Footer = () => {
-  console.log("Footer is rendered");
   return (
     <footer className="footer">
       <div className="footer-container">
