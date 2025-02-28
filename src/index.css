@@ -1,9 +1,13 @@
+:root {
+  --swiper-theme-color: #433f3f;
+}
+
 html,
 body {
   height: 100%;
   margin: 0;
   padding: 0;
-  background-color: #F0EADC;
+  background-color: #f0eadc;
   display: flex;
   flex-direction: column;
 }
@@ -12,13 +16,13 @@ main {
   flex-grow: 1;
 }
 
+/* ------- NAVBAR -------- */
 .navbar {
   position: fixed;
   bottom: 0;
   left: 0;
   width: 100%;
   display: flex;
-  flex-direction: row;
   flex-wrap: wrap;
   justify-content: space-evenly;
   align-items: center;
@@ -36,7 +40,6 @@ main {
   margin: 0;
   padding: 0;
   display: flex;
-  flex-direction: row;
   flex-wrap: wrap;
   list-style: none;
   gap: 4rem;
@@ -47,6 +50,51 @@ ul {
   padding: 0;
 }
 
+/* استایل برای دکمه همبرگر */
+.menu-button {
+  background: none;
+  border: none;
+  cursor: pointer;
+  color: black;
+  font-size: 24px;
+}
+
+/* استایل برای منوی کشویی دسته‌بندی‌ها */
+.dropdown-menu {
+  position: absolute;
+  top: -220px; /* تغییر موقعیت برای نمایش زیر نوار ناوبری */
+  left: 10px;
+  background: white;
+  border-radius: 5px;
+  box-shadow: 0px 4px 6px rgba(0, 0, 0, 0.1);
+  width: 200px;
+  padding: 10px;
+  z-index: 100;
+  transition: all 0.3s ease-in-out;
+}
+
+.dropdown-menu ul {
+  list-style: none;
+  padding: 0;
+}
+
+.dropdown-menu li {
+  padding: 10px;
+  border-bottom: 1px solid #ddd;
+}
+
+.dropdown-menu li a {
+  text-decoration: none;
+  color: black;
+  display: block;
+}
+
+.dropdown-menu li:hover {
+  background: #f5f5f5;
+}
+/* استایل برای منوی کشویی دسته‌بندی‌ها */
+
+/* ------- PRODUCT LIST -------- */
 .product-list {
   display: flex;
   flex-direction: column;
@@ -56,9 +104,8 @@ ul {
 
 .product-card {
   width: 80%;
-  margin-bottom: 20px;
-  padding: 1rem;
   margin: 1rem;
+  padding: 1rem;
   border: 1px solid #ccc;
   background-color: #fff;
   display: flex;
@@ -107,6 +154,7 @@ ul {
   object-fit: cover;
 }
 
+/* ------- PRODUCT CARD DETAILS -------- */
 .product-card-details {
   display: flex;
   flex-direction: column;
@@ -116,16 +164,6 @@ ul {
   border-radius: 8px;
   max-width: 400px;
   background-color: #fff;
-}
-
-.add-button {
-  background-color: #333;
-  color: #fff;
-  border: none;
-  padding: 1rem;
-  border-radius: 8px;
-  cursor: pointer;
-  font-size: 1rem;
 }
 
 .product-card-details img {
@@ -139,12 +177,182 @@ ul {
 
 .product-card-details-row {
   display: flex;
-  flex-direction: row;
   justify-content: space-between;
   width: 100%;
 }
 
 
+/* —— Modal overlay  ——— */
+.modal-overlay {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(0, 0, 0, 0.5);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    z-index: 1000;
+  }
+  
+  /* ————  Modal content ———— */
+  .modal-content {
+    background-color: white;
+    padding: 20px;
+    border-radius: 5px;
+    width: 300px;
+    text-align: center;
+    position: relative;
+  }
+  
+  /*  ———— Close button ———— */
+  .close {
+    position: absolute;
+    top: 10px;
+    right: 10px;
+    font-size: 24px;
+    cursor: pointer;
+  }
+
+.close {
+  color: #aaaaaa;
+  float: right;
+  font-size: 28px;
+  font-weight: bold;
+}
+
+.close:hover,
+.close:focus {
+  color: #000;
+  text-decoration: none;
+  cursor: pointer;
+}
+
+/* ------- ADD TO CART BUTTON -------- */
+.add-button,
+.add-to-cart-button {
+  background-color: #333;
+  color: #fff;
+  border: none;
+  padding: 1rem;
+  border-radius: 8px;
+  cursor: pointer;
+  font-size: 1rem;
+}
+
+.add-to-cart-button {
+  background-color: #ff9800;
+  padding: 8px 12px;
+  font-size: 14px;
+  margin-top: 5px;
+  border-radius: 4px;
+}
+
+.add-to-cart-button:hover {
+  background-color: #e68900;
+}
+
+/* ------- CART -------- */
+.cart-link {
+  position: relative;
+  text-decoration: none;
+  color: inherit;
+}
+
+.cart-count {
+  position: absolute;
+  top: -5px;
+  right: -10px;
+  background-color: red;
+  color: white;
+  font-size: 12px;
+  font-weight: bold;
+  border-radius: 50%;
+  padding: 4px 7px;
+}
+
+/* ------- SWIPER -------- */
+.swiper {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: 100%;
+}
+
+.swiper-slide {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  text-align: center;
+}
+
+/* ------- FOOTER -------- */
+.footer {
+  background: #f8f8f8;
+  padding: 30px 20px;
+  text-align: center;
+  margin-top: auto;
+}
+
+.footer-container {
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-start;
+  max-width: 1200px;
+  margin: 0 auto;
+  padding-bottom: 10px;
+}
+
+.footer-section {
+  flex: 1;
+  min-width: 200px;
+  text-align: left;
+}
+
+.footer-section h3 {
+  font-size: 16px;
+  margin-bottom: 10px;
+}
+
+.footer-section ul {
+  list-style: none;
+  padding: 0;
+}
+
+.footer-section li {
+  font-size: 14px;
+  margin-bottom: 5px;
+}
+
+.footer-socials {
+  display: flex;
+  gap: 15px;
+  align-items: center;
+  justify-content: center;
+}
+
+footer-socials .social-icon {
+  color: black;
+  transition: color 0.3s ease;
+}
+
+.footer-socials .social-icon:hover {
+  color: #333;
+}
+
+.footer-rights {
+  text-align: center;
+  margin-top: 15px;
+  font-size: 12px;
+  color: #666;
+}
+
+main {
+  flex-grow: 1;
+}
+
+/* ------- RESPONSIVE DESIGN -------- */
 @media (min-width: 768px) {
   .product-list {
     flex-direction: row;
@@ -159,5 +367,32 @@ ul {
     padding: 1rem;
   }
 
+  .product-card-details {
+    display: flex;
+    flex-direction: column;
+  }
 
+  .product-card-details-desktop {
+    display: flex;
+    flex-direction: row;
+    background: #fdfcf9;
+    padding: 1rem;
+    margin: 1rem;
+    border: 1px solid #ddd;
+    border-radius: 8px;
+    justify-content: center;
+  }
+
+  .product-card-details-mobile {
+    display: none;
+  }
+
+  .product-card-details-desktop img {
+    max-width: 500px;
+    height: auto;
+    border-radius: 8px;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.6);
+    padding: 1rem;
+    margin: 1rem;
+  }
 }
