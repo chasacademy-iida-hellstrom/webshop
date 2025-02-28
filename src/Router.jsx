@@ -6,6 +6,7 @@ import Product from "./pages/Product";
 import Cart from "./components/Cart";
 import OrderConfirmation from "./components/OrderConfirmation";
 import Navbar from "./components/Navbar";
+import SearchBar from "./components/SearchBar";
 import CategoriesBar from "./components/CategoriesBar";
 import Category from "./pages/Category";
 
@@ -13,7 +14,7 @@ const AppRouter = () => {
   return (
     <Router>
       <Navbar />
-
+      <SearchBar />
       <nav>
         <ul>
           <li>
@@ -30,7 +31,6 @@ const AppRouter = () => {
           </li>
         </ul>
       </nav>
-
       <Routes>
         <Route path="/" element={<Home />} />
         <Route path="/about" element={<About />} />
