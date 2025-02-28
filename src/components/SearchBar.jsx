@@ -1,7 +1,5 @@
-
 import { useState } from "react";
 import { useNavigate } from "react-router-dom";
-import "font-awesome/css/font-awesome.min.css";
 
 const SearchBar = () => {
   const [query, setQuery] = useState("");
