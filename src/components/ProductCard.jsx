@@ -3,13 +3,19 @@ import { Link } from "react-router-dom";
 import { FaHeart, FaRegHeart } from "react-icons/fa";
 import PropTypes from "prop-types"; 
 import useCart from "../hooks/useCart"; 
+import useFavorites from "../hooks/useFavorites";
 
 const ProductCard = ({ product }) => {
-  const [isFavorite, setIsFavorite] = useState(false);
+  const { favorites, addToFavorites, removeFromFavorites } = useFavorites();
+  const isFavorite = favorites.some(item => item.id === product.id);
   const { addToCart } = useCart(); 
 
-  const toggleFavorite = () => {
-    setIsFavorite(!isFavorite);
+  const handleFavoriteClick = () => {
+    if (isFavorite) {
+      removeFromFavorites(product.id);
+    } else {
+      addToFavorites(product);
+    }
   };
 
   return (
@@ -22,7 +28,7 @@ const ProductCard = ({ product }) => {
           <p>{product.title}</p>
           <button className="favorite-button" onClick={(e) => { 
             e.preventDefault();
-            toggleFavorite();
+            handleFavoriteClick();
           }}>
             {isFavorite ? <FaHeart /> : <FaRegHeart />}
           </button>
@@ -41,7 +47,7 @@ const ProductCard = ({ product }) => {
   );
 };
 
-// ✅ Lägg till prop-validering
+// Prop validation
 ProductCard.propTypes = {
   product: PropTypes.shape({
     id: PropTypes.number.isRequired,

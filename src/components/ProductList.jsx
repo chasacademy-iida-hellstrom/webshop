@@ -1,14 +1,15 @@
-import useFetchProducts from "../hooks/FetchProducts";
+import React, { useEffect, useState } from "react";
 import CategoriesBar from "./CategoriesBar";
 import ProductCard from "./ProductCard";
 
 const ProductList = () => {
-  const { products, loading, error } = useFetchProducts();
+  const [products, setProducts] = useState([]);
 
-  console.log("Rendering ProductList:", products);
-
-  if (loading) return <p>Laddar produkter...</p>;
-  if (error) return <p>Ett fel uppstod: {error}</p>;
+  useEffect(() => {
+    fetch("https://fakestoreapi.com/products")
+      .then((res) => res.json())
+      .then((data) => setProducts(data));
+  }, []);
 
   return (
     <div>

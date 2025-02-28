@@ -8,6 +8,7 @@ import OrderConfirmation from "./components/OrderConfirmation";
 import Navbar from "./components/Navbar";
 import CategoriesBar from "./components/CategoriesBar";
 import Category from "./pages/Category";
+import Favorites from "./components/Favorites";
 
 const AppRouter = () => {
   return (
@@ -28,6 +29,9 @@ const AppRouter = () => {
           <li>
             <Link to="/cart">Kundvagn</Link>
           </li>
+          <li>
+            <Link to="/favorites">Favoriter</Link>
+          </li>
         </ul>
       </nav>
 
@@ -40,6 +44,7 @@ const AppRouter = () => {
         <Route path="/order-confirmation" element={<OrderConfirmation />} />
         <Route path="/categoriesBar" element={<CategoriesBar />} />
         <Route path="/category/:category" element={<Category />} />
+        <Route path="/favorites" element={<Favorites />} />
       </Routes>
     </Router>
   );
