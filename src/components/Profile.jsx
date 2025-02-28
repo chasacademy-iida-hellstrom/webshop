@@ -4,8 +4,7 @@ const Profile = () => {
   const [orders, setOrders] = useState([]);
   const [error, setError] = useState(null);
   const [isLoggedIn, setIsLoggedIn] = useState(false);
-  const [user, setUser] = useState({ name: '', email: '', phone: '', profileImage: '' });
-  const [wishlist, setWishlist] = useState([]);
+  const [user, setUser] = useState({ name: '', email: '', phone: '' });
   const [addresses, setAddresses] = useState([]);
   const [newAddress, setNewAddress] = useState('');
   const [isEditing, setIsEditing] = useState(false);
@@ -42,22 +41,13 @@ const Profile = () => {
   const handleLogin = () => {
     // Replace with actual login logic
     setIsLoggedIn(true);
-    setUser({ name: 'John Doe', email: 'john.doe@example.com', phone: '123-456-7890', profileImage: '' });
+    setUser({ name: 'John Doe', email: 'john.doe@example.com', phone: '123-456-7890' });
   };
 
   const handleLogout = () => {
     setIsLoggedIn(false);
     setOrders([]);
-    setUser({ name: '', email: '', phone: '', profileImage: '' });
-  };
-
-  const handleProfileImageChange = (e) => {
-    const file = e.target.files[0];
-    const reader = new FileReader();
-    reader.onloadend = () => {
-      setUser(prevState => ({ ...prevState, profileImage: reader.result }));
-    };
-    reader.readAsDataURL(file);
+    setUser({ name: '', email: '', phone: '' });
   };
 
   const handleAddAddress = () => {
@@ -84,10 +74,6 @@ const Profile = () => {
       {isLoggedIn ? (
         <>
           <h2>Profil</h2>
-          <div className="profile-image-container">
-            <img src={user.profileImage || 'default-profile.png'} alt="Profile" />
-            <input type="file" onChange={handleProfileImageChange} />
-          </div>
           {isEditing ? (
             <div>
               <input type="text" name="name" value={user.name} onChange={handleChange} placeholder="Namn" />
@@ -119,17 +105,6 @@ const Profile = () => {
                 ))}
               </ul>
             )}
-          </div>
-          <div className="wishlist">
-            <h3>Önskelista</h3>
-            <ul>
-              {wishlist.map(item => (
-                <li key={item.id}>
-                  <span>{item.title}</span>
-                  <button onClick={() => setWishlist(wishlist.filter(w => w.id !== item.id))}>Ta bort</button>
-                </li>
-              ))}
-            </ul>
           </div>
           <div className="addresses">
             <h3>Adresser</h3>
