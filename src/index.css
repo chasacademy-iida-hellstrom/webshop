@@ -233,6 +233,54 @@ ul {
   text-align: center;
 }
 
+.profile-container {
+  padding: 20px;
+}
+
+.profile-container h2 {
+  font-size: 24px;
+  margin-bottom: 20px;
+}
+
+.profile-container ul {
+  list-style-type: none;
+  padding: 0;
+}
+
+.profile-container li {
+  border: 1px solid #ddd;
+  padding: 10px;
+  margin-bottom: 10px;
+}
+
+/* ------- ORDER HISTORY -------- */
+.order-history {
+  margin-top: 20px;
+}
+
+.order-history h3 {
+  font-size: 20px;
+  margin-bottom: 10px;
+}
+
+.order-history ul {
+  list-style-type: none;
+  padding: 0;
+}
+
+.order-history li {
+  border: 1px solid #ddd;
+  padding: 10px;
+  margin-bottom: 10px;
+  border-radius: 8px;
+  background-color: #fff;
+}
+
+.order-history li span {
+  display: block;
+  margin-bottom: 5px;
+}
+
 /* ------- RESPONSIVE DESIGN -------- */
 @media (min-width: 768px) {
   .product-list {

@@ -6,6 +6,7 @@ import ProductPage from "./components/ProductPage";
 import Cart from "./components/Cart";
 import OrderConfirmation from "./components/OrderConfirmation";
 import Navbar from "./components/Navbar";
+import Profile from "./components/Profile";
 
 const AppRouter = () => {
   return (
@@ -20,6 +21,7 @@ const AppRouter = () => {
           <li><Link to="/about">Om oss</Link></li>
           <li><Link to="/products">Produkter</Link></li>
           <li><Link to="/cart">Kundvagn</Link></li>
+          <li><Link to="/profile">Profile</Link></li>
         </ul>
       </nav>
 
@@ -30,6 +32,7 @@ const AppRouter = () => {
         <Route path="/products/:id" element={<ProductPage />} />
         <Route path="/cart" element={<Cart />} />
         <Route path="/order-confirmation" element={<OrderConfirmation />} />
+        <Route path="/profile" element={<Profile />} />
       </Routes>
     </Router>
   );
