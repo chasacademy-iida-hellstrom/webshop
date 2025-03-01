@@ -1,19 +1,36 @@
 import { useParams } from "react-router-dom";
 import useFetchProducts from "../hooks/FetchProducts";
 import useCart from "../hooks/useCart";
-import { FaHeart, FaRegHeart } from "react-icons/fa"; // Import icons
-import { useState } from "react"; // Import useState
+import { FaHeart, FaRegHeart } from "react-icons/fa"; 
+import { useState } from "react"; 
 
 const Product = () => {
   const { id } = useParams();
   const { products } = useFetchProducts();
-  const { addToCart } = useCart() || {}; // Ensure useCart is not undefined
+  const { addToCart } = useCart() || {}; 
   const product = products.find((p) => p.id.toString() === id);
 
-  const [isFavorite, setIsFavorite] = useState(false); // State for favorite
+ 
+  const storedFavorites = JSON.parse(localStorage.getItem("favorites")) || [];
+  const isProductFavorite = storedFavorites.some((fav) => fav.id === product?.id);
+  const [isFavorite, setIsFavorite] = useState(isProductFavorite); 
 
   const toggleFavorite = () => {
-    setIsFavorite(!isFavorite);
+    let updatedFavorites = JSON.parse(localStorage.getItem("favorites")) || [];
+
+    setIsFavorite((prevState) => {
+      const newFavoriteState = !prevState; 
+
+      if (newFavoriteState) {
+        updatedFavorites.push(product);
+      } else {
+        updatedFavorites = updatedFavorites.filter((fav) => fav.id !== product.id);
+      }
+
+      localStorage.setItem("favorites", JSON.stringify(updatedFavorites));
+
+      return newFavoriteState;
+    });
   };
 
   if (!product) return <p>Produkten hittades inte.</p>;
