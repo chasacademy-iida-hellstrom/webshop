@@ -24,9 +24,9 @@ const AppRouter = () => {
           <li>
             <Link to="/about">Om oss</Link>
           </li>
-          <li>
+          {/* <li>
             <Link to="/products">Produkter</Link>
-          </li>
+          </li> */}
           <li>
             <Link to="/cart">Kundvagn</Link>
           </li>
