@@ -1,5 +1,5 @@
 import { useState, useEffect } from "react";
-import { useParams } from "react-router-dom";
+import { Link, useParams } from "react-router-dom";
 import PropTypes from "prop-types";
 import ProductCard from "../components/ProductCard";
 
@@ -15,7 +15,13 @@ const Category = ({ setCartCount }) => {
 
   return (
     <div>
-      <h1>Category: {category}</h1>
+      <ul className="breadcrumb">
+        <li>
+          <Link to="/products">All Products</Link>
+        </li>
+        <li>{category}</li>
+      </ul>
+
       <div className="product-list">
         {products.map((product) => (
           <ProductCard key={product.id} product={product} setCartCount={setCartCount} />

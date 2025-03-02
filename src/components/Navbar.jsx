@@ -97,12 +97,14 @@ const Navbar = () => {
       {isMenuOpen && (
         <div className="dropdown-menu" ref={menuRef}>
           <ul>
+            <li key="all">
+              <Link to="/products" onClick={() => setIsMenuOpen(false)}>
+                All Products
+              </Link>
+            </li>
             {categories.map((category) => (
               <li key={category}>
-                <Link
-                  to={`/category/${category}`}
-                  onClick={() => setIsMenuOpen(false)}
-                >
+                <Link className="text-capitalize" to={`/category/${category}`} onClick={() => setIsMenuOpen(false)}>
                   {category}
                 </Link>
               </li>

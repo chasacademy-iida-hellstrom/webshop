@@ -12,6 +12,9 @@ function CategoriesBar() {
 
   return (
     <div className="categories-bar">
+      <Link key="all" to="/products" className="category-link">
+        All Products
+      </Link>
       {categories.map((category) => (
         <Link key={category} to={`/category/${category}`} className="category-link">
           {category}
