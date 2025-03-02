@@ -2,13 +2,35 @@ import { useState } from "react";
 import { Link } from "react-router-dom";
 import { FaHeart, FaRegHeart } from "react-icons/fa";
 import PropTypes from "prop-types"; 
-import useCart from "../hooks/useCart"; 
+import useCart from "../hooks/useCart";
 
 const ProductCard = ({ product }) => {
-  const [isFavorite, setIsFavorite] = useState(false);
-  const { addToCart } = useCart(); 
+  const { addToCart } = useCart();
+  
+  const storedFavorites = JSON.parse(localStorage.getItem("favorites")) || [];
+  const isProductFavorite = storedFavorites.some((fav) => fav.id === product.id);
 
-  const toggleFavorite = () => {
+  const [isFavorite, setIsFavorite] = useState(isProductFavorite);
+
+  const handleFavoriteClick = (e) => {
+    e.preventDefault();
+
+    let updatedFavorites = JSON.parse(localStorage.getItem("favorites")) || [];
+
+    if (!isFavorite) {
+      if (!updatedFavorites.some((fav) => fav.id === product.id)) {
+        updatedFavorites.push({
+          id: product.id,
+          title: product.title,
+          image: product.image,
+          price: product.price
+        });
+      }
+    } else {
+      updatedFavorites = updatedFavorites.filter((fav) => fav.id !== product.id);
+    }
+
+    localStorage.setItem("favorites", JSON.stringify(updatedFavorites));
     setIsFavorite(!isFavorite);
   };
 
@@ -20,11 +42,8 @@ const ProductCard = ({ product }) => {
         </div>
         <div className="product-info">
           <p>{product.title}</p>
-          <button className="favorite-button" onClick={(e) => { 
-            e.preventDefault();
-            toggleFavorite();
-          }}>
-            {isFavorite ? <FaHeart /> : <FaRegHeart />}
+          <button className="favorite-button" onClick={handleFavoriteClick}>
+            {isFavorite ? <FaHeart className="text-red-500" /> : <FaRegHeart className="text-gray-500" />}
           </button>
         </div>
       </Link>

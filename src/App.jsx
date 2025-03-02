@@ -1,13 +1,16 @@
+import React from "react";
 import Footer from "./components/Footer";
-import CartProvider from "./context/CartContext";
 import AppRouter from "./Router";
 
 const App = () => {
   return (
-    <CartProvider>
-      <AppRouter />
-      <Footer />
-    </CartProvider>
+    <AppRouter>
+      <Footer>
+
+      </Footer>
+    </AppRouter>
+
+
   );
 };
 

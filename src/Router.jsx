@@ -9,6 +9,7 @@ import Navbar from "./components/Navbar";
 import SearchBar from "./components/SearchBar";
 import CategoriesBar from "./components/CategoriesBar";
 import Category from "./pages/Category";
+import Favorites from "./pages/Favorites";
 
 const AppRouter = () => {
   return (
@@ -40,6 +41,7 @@ const AppRouter = () => {
         <Route path="/order-confirmation" element={<OrderConfirmation />} />
         <Route path="/categoriesBar" element={<CategoriesBar />} />
         <Route path="/category/:category" element={<Category />} />
+        <Route path="/favorites" element={<Favorites />} /> /*Endast via nedre navbar*/
       </Routes>
     </Router>
   );
