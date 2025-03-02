@@ -3,15 +3,7 @@ import Footer from "./components/Footer";
 import AppRouter from "./Router";
 
 const App = () => {
-  return (
-    <AppRouter>
-      <Footer>
-
-      </Footer>
-    </AppRouter>
-
-
-  );
+  return <AppRouter></AppRouter>;
 };
 
 export default App;

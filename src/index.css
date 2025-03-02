@@ -301,6 +301,7 @@ ul {
   padding: 30px 20px;
   text-align: center;
   margin-top: auto;
+  display: none;
 }
 
 .footer-container {
@@ -459,5 +460,9 @@ ul.breadcrumb li a:hover {
     right: 10px;
     left: auto;
     bottom: auto;
+  }
+
+  .footer {
+    display: block;
   }
 }
