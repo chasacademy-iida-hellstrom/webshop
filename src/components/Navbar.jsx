@@ -5,6 +5,7 @@ import { HiOutlineShoppingBag } from "react-icons/hi";
 import { MdOutlineSearch } from "react-icons/md";
 import { useState, useEffect, useRef } from "react";
 import { Link, useLocation } from "react-router-dom";
+import Logo from "../Images/logo.svg";
 
 const Navbar = () => {
   const [cartCount, setCartCount] = useState(0);
@@ -56,6 +57,11 @@ const Navbar = () => {
 
   return (
     <nav className="navbar">
+      <div className="logo-item">
+          <Link to="/">
+            <img src={Logo} alt="Logo" className="logo" />
+          </Link>
+        </div>
       <ul className="navList">
         <li>
           <Link to="/search">
@@ -68,7 +74,10 @@ const Navbar = () => {
           </Link>
         </li>
         <li>
-          <button className="menu-button" onClick={() => setIsMenuOpen(!isMenuOpen)}>
+          <button
+            className="menu-button"
+            onClick={() => setIsMenuOpen(!isMenuOpen)}
+          >
             <LuAlignJustify className="navIcons" />
           </button>
         </li>
