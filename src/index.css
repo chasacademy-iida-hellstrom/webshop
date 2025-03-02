@@ -14,8 +14,8 @@ body {
 
 main {
   flex-grow: 1;
-  padding-top: 20rem;  
-  padding-bottom: 20rem;  
+  padding-top: 20rem;
+  padding-bottom: 20rem;
   overflow: auto;
 }
 
@@ -54,11 +54,9 @@ ul {
   padding: 0;
 }
 
-
 .logo-item {
   display: none;
 }
-
 
 .menu-button {
   background: none;
@@ -70,7 +68,7 @@ ul {
 
 .dropdown-menu {
   position: absolute;
-  top: -220px;
+  bottom: 70px;
   left: 10px;
   background: white;
   border-radius: 5px;
@@ -390,7 +388,6 @@ ul.breadcrumb li a:hover {
   color: black;
 }
 
-
 /* ------- RESPONSIVE DESIGN -------- */
 @media (min-width: 768px) {
   .product-list {
@@ -436,9 +433,9 @@ ul.breadcrumb li a:hover {
   }
 
   .navbar {
-    top: 0;  
-    bottom: auto; 
-    justify-content: space-between; 
+    top: 0;
+    bottom: auto;
+    justify-content: space-between;
   }
 
   .navList {
@@ -450,9 +447,17 @@ ul.breadcrumb li a:hover {
     display: block;
     padding-left: 2rem;
   }
-  
+
   .logo {
-    width: 150px; 
+    width: 150px;
     height: auto;
+  }
+
+  .dropdown-menu {
+    position: absolute;
+    top: 70px;
+    right: 10px;
+    left: auto;
+    bottom: auto;
   }
 }
