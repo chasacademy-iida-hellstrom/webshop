@@ -14,6 +14,9 @@ body {
 
 main {
   flex-grow: 1;
+  padding-top: 20rem;  
+  padding-bottom: 20rem;  
+  overflow: auto;
 }
 
 /* ------- NAVBAR -------- */
@@ -26,7 +29,7 @@ main {
   flex-wrap: wrap;
   justify-content: space-evenly;
   align-items: center;
-  background-color: lightgrey;
+  background-color: rgb(255, 255, 255);
   z-index: 1000;
   height: 4rem;
 }
@@ -43,11 +46,16 @@ main {
   flex-wrap: wrap;
   list-style: none;
   gap: 4rem;
+  justify-content: flex-end;
 }
 
 ul {
   list-style-type: none;
   padding: 0;
+}
+
+.logo-item {
+  display: none;
 }
 
 /* استایل برای دکمه همبرگر */
@@ -348,10 +356,6 @@ footer-socials .social-icon {
   color: #666;
 }
 
-main {
-  flex-grow: 1;
-}
-
 /* ------- RESPONSIVE DESIGN -------- */
 @media (min-width: 768px) {
   .product-list {
@@ -394,5 +398,26 @@ main {
     box-shadow: 0 2px 4px rgba(0, 0, 0, 0.6);
     padding: 1rem;
     margin: 1rem;
+  }
+
+  .navbar {
+    top: 0;  
+    bottom: auto; 
+    justify-content: space-between; 
+  }
+
+  .navList {
+    gap: 2.5rem;
+    padding-right: 2rem;
+  }
+
+  .logo-item {
+    display: block;
+    padding-left: 2rem;
+  }
+  
+  .logo {
+    width: 150px; 
+    height: auto;
   }
 }
