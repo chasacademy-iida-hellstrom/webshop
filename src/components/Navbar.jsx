@@ -1,6 +1,6 @@
 import { LuAlignJustify } from "react-icons/lu";
 import { FiHome } from "react-icons/fi";
-import { FaRegHeart } from "react-icons/fa6";
+import { FaHeart, FaRegHeart } from "react-icons/fa6";
 import { HiOutlineShoppingBag } from "react-icons/hi";
 import { MdOutlineSearch } from "react-icons/md";
 import { useState, useEffect, useRef } from "react";
@@ -11,6 +11,7 @@ const Navbar = () => {
   const [cartCount, setCartCount] = useState(0);
   const [isMenuOpen, setIsMenuOpen] = useState(false);
   const [categories, setCategories] = useState([]);
+  const [hasFavorites, setHasFavorites] = useState(false)
   const menuRef = useRef(null);
   const location = useLocation(); // *Get the current location of the app*
 
@@ -20,13 +21,26 @@ const Navbar = () => {
     setCartCount(totalItems);
   };
 
+  const updateFavorites = () => {
+    const favorites = JSON.parse(localStorage.getItem("favorites")) || [];
+    setHasFavorites(favorites.length > 0);
+  };
+  const handleFavoritesUpdate = () => {
+    updateFavorites();
+  }
+
   useEffect(() => {
     updateCartCount();
+    updateFavorites();
     const handleCartUpdate = () => updateCartCount();
+    
     window.addEventListener("cartUpdated", handleCartUpdate);
+    window.addEventListener("favoritesUpdated", handleFavoritesUpdate);
+
 
     return () => {
       window.removeEventListener("cartUpdated", handleCartUpdate);
+      window.removeEventListener("favoritesUpdated", handleFavoritesUpdate);
     };
   }, []);
 
@@ -83,7 +97,11 @@ const Navbar = () => {
         </li>
         <li>
           <Link to="/favorites">
-            <FaRegHeart className="navIcons" />
+            {hasFavorites ? (
+              <FaHeart className="navIcons text-red-500" />
+            ) : (
+              <FaRegHeart className="navIcons" />
+            )}
           </Link>
         </li>
         <li>
