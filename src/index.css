@@ -51,8 +51,9 @@ a {
   color: black;
 }
 
-a:hover,
-.menu-button:hover {
+
+a:hover {
+>>>>>>> 352818b51bf21a5da15cefce1489bd513033e44e
   color: #e68900;
 }
 
