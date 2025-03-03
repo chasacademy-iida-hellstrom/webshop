@@ -20,31 +20,29 @@ const LatestProducts = () => {
       ) : (
         <Swiper
           modules={[Navigation, Pagination]}
-          spaceBetween={30}
-          centeredSlides={true}
-          slidesPerView={1}
+          spaceBetween={20}
+          slidesPerView={3}
           navigation={true}
           pagination={false}
-          breakpoints={{
-            640: { slidesPerView: 1 },
-            768: { slidesPerView: 1 },
-          }}
+          breakpoints={
+            {
+              // 640: { slidesPerView: 3 },
+              // 768: { slidesPerView: 3 },
+              // 1024: { slidesPerView: 3 },
+            }
+          }
         >
           {latestProducts.map((product) => (
             <SwiperSlide key={product.id}>
-              <div className="latest-product-card text-center">
+              <div className="latest-product-card">
                 <Link to={`/products/${product.id}`}>
-                  <img
-                    src={product.image}
-                    alt={product.title}
-                    className="w-60 mx-auto rounded-md transition-transform duration-300 hover:scale-105"
-                  />
+                  <img src={product.image} alt={product.title} className="product-image" />
                 </Link>
-                <Link to={`/products/${product.id}`}>
-                  <h3 className="latest-product-title text-lg font-semibold mt-2 hover:text-blue-500">
-                    {product.title}
-                  </h3>
-                </Link>
+                <div className="product-info">
+                  <Link to={`/products/${product.id}`}>
+                    <h3 className="product-title">{product.title}</h3>
+                  </Link>
+                </div>
               </div>
             </SwiperSlide>
           ))}
