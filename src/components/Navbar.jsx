@@ -6,6 +6,7 @@ import { MdOutlineSearch } from "react-icons/md";
 import { useState, useEffect, useRef } from "react";
 import { Link, useLocation } from "react-router-dom";
 import SearchBar from "./SearchBar";
+import Logo from "../Images/logo.svg";
 
 
 const Navbar = () => {
