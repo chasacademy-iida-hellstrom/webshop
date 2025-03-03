@@ -51,9 +51,12 @@ a {
   color: black;
 }
 
-
+<<<<<<<<< Temporary merge branch 1
 a:hover {
->>>>>>> 352818b51bf21a5da15cefce1489bd513033e44e
+=========
+a:hover,
+.menu-button:hover{
+>>>>>>>>> Temporary merge branch 2
   color: #e68900;
 }
 
