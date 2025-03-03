@@ -1,5 +1,25 @@
 :root {
   --swiper-theme-color: #433f3f;
+  --swiper-slide-width: 200px;
+  --swiper-slide-height: 200px;
+}
+
+.swiper-button-prev:after,
+.swiper-button-next:after {
+  position: absolute;
+  top: 50%;
+  transform: translateY(-50%);
+  font-size: 24px;
+  color: #333;
+  background: rgba(0, 0, 0, 0.1);
+  width: 40px;
+  height: 40px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border-radius: 50%;
+  cursor: pointer;
+  z-index: 10;
 }
 
 html,
@@ -18,8 +38,7 @@ main {
   padding-top: 20rem;
   padding-bottom: 20rem;
   overflow: auto;
-
-  display: flex;  
+  display: flex;
   flex-direction: column;
   flex-wrap: wrap;
   justify-content: center;
@@ -32,10 +51,10 @@ a {
   color: black;
 }
 
-a:hover{
+a:hover,
+.menu-button:hover {
   color: #e68900;
 }
-
 
 /* ------- NAVBAR -------- */
 .navbar {
@@ -45,7 +64,7 @@ a:hover{
   width: 100%;
   display: flex;
   flex-wrap: wrap;
-  justify-content: space-evenly;
+  justify-content: center;
   align-items: center;
   background-color: rgb(255, 255, 255);
   z-index: 1000;
@@ -61,10 +80,10 @@ a:hover{
   margin: 0;
   padding: 0;
   display: flex;
-  flex-wrap: wrap;
   list-style: none;
-  gap: 4rem;
-  justify-content: flex-end;
+  gap: 2.5rem;
+  justify-content: center;
+  align-items: center;
 }
 
 ul {
@@ -187,30 +206,45 @@ ul {
 }
 
 .latest-products-container {
+  max-width: 1200px;
+  margin: 0 auto;
+  padding-top: 20px;
+  padding-bottom: 20px;
   display: flex;
   flex-direction: column;
   align-items: center;
   justify-content: center;
-  flex-wrap: wrap;
 }
 
 .latest-product-card {
+  background: white;
+  border-radius: 10px;
+  padding: 15px;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+  text-align: center;
+  transition: transform 0.2s ease-in-out;
+  height: 200px;
+  width: 200px;
   display: flex;
   flex-direction: column;
-  justify-content: center;
-  align-items: center;
-  max-width: 350px;
-  margin-bottom: 6rem;
+  justify-content: space-between;
 }
 
 .latest-products-container img {
+  object-fit: contain;
   width: 100%;
-  height: auto;
+  height: 200px;
 }
 
-
-
 /* ------- PRODUCT CARD DETAILS -------- */
+
+.product-card-details-mobile {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  align-items: center;
+  margin-bottom: 4rem;
+}
 .product-card-details {
   display: flex;
   flex-direction: column;
@@ -237,22 +271,21 @@ ul {
   width: 100%;
 }
 
-/* —— Modal overlay  ——— */
-.modal-overlay {
-  position: fixed;
-  top: 0;
-  left: 0;
-  width: 100%;
-  height: 100%;
-  background-color: rgba(0, 0, 0, 0.5);
+.product-card-details-desktop {
+  display: none;
+}
+
+/* -------—— FAVORITES -----——— */
+.p-4 {
   display: flex;
+  flex-direction: column;
+  flex-wrap: wrap;
   justify-content: center;
   align-items: center;
-  z-index: 1000;
+  height: 100vh;
 }
 
 /* ——----- CART  -------——— */
-
 .cart-wrapper {
   height: 100vh;
   display: flex;
@@ -262,6 +295,7 @@ ul {
   flex-wrap: wrap;
   padding-bottom: 4rem;
 }
+
 .cart-container {
   max-width: 500px;
   display: flex;
@@ -296,7 +330,7 @@ ul {
   background: black;
   color: white;
   font-size: large;
-  box-shadow: rgb( 0, 0, 0.5) 2px 2px 2px;
+  box-shadow: rgb(0, 0, 0.5) 2px 2px 2px;
   margin-bottom: 4rem;
 }
 
@@ -307,7 +341,7 @@ ul {
   background: white;
 }
 
-/* ——------ Modal  ----——— */
+/* ——------- MODAL ------——— */
 .modal-overlay {
   position: fixed;
   top: 0;
@@ -329,6 +363,7 @@ ul {
   text-align: center;
   position: relative;
 }
+
 .modal-content button {
   background: black;
   color: white;
@@ -337,7 +372,7 @@ ul {
   height: 2rem;
 }
 
-/*  ———— Close button ———— */
+/*  ——--—— CLOSE BUTTON ——---—— */
 .close {
   position: absolute;
   top: 10px;
@@ -381,7 +416,7 @@ ul {
   background-color: #e68900;
 }
 
-/* ------- CART -------- */
+/* ---------- CART ----------- */
 .cart-link {
   position: relative;
   text-decoration: none;
@@ -467,7 +502,7 @@ footer-socials .social-icon {
 }
 
 .footer-socials .social-icon:hover {
-  color: #333;
+  color: #e68900;
 }
 
 .footer-rights {
@@ -538,6 +573,8 @@ ul.breadcrumb li a:hover {
     border: 1px solid #ddd;
     border-radius: 8px;
     justify-content: center;
+    align-items: center;
+    margin-top: 6rem;
   }
 
   .product-card-details-mobile {
@@ -584,5 +621,6 @@ ul.breadcrumb li a:hover {
 
   .footer {
     display: block;
+    margin-top: 40rem;
   }
 }

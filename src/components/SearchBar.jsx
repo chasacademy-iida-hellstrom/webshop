@@ -70,6 +70,9 @@ const SearchBar = ({onClose}) => {
   return (
     <div style={styles.overlay}>
       <div ref={searchContainerRef} style={styles.searchContainer}>
+
+    <div style={styles.overlay}>
+      <div style={styles.searchContainer}>
       <form style={styles.searchForm}>
         <input
           type="text"
