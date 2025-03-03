@@ -17,35 +17,36 @@ const AppRouter = () => {
     <Router>
       <Navbar />
       <main>
-      <nav>
-        <ul>
-          <li>
-            <Link to="/">Hem</Link>
-          </li>
-          <li>
-            <Link to="/about">Om oss</Link>
-          </li>
-          {/* <li>
+        <nav>
+          <ul>
+            <li>
+              <Link to="/">Hem</Link>
+            </li>
+            <li>
+              <Link to="/about">Om oss</Link>
+            </li>
+            {/* <li>
             <Link to="/products">Produkter</Link>
           </li> */}
-          <li>
-            <Link to="/cart">Kundvagn</Link>
-          </li>
-        </ul>
-      </nav>
+            <li>
+              <Link to="/cart">Kundvagn</Link>
+            </li>
+          </ul>
+        </nav>
       </main>
 
-      <Routes>
-        <Route path="/" element={<Home />} />
-        <Route path="/about" element={<About />} />
-        <Route path="/products" element={<ProductList />} />
-        <Route path="/products/:id" element={<Product />} />
-        <Route path="/cart" element={<Cart />} />
-        <Route path="/order-confirmation" element={<OrderConfirmation />} />
-        <Route path="/categoriesBar" element={<CategoriesBar />} />
-        <Route path="/category/:category" element={<Category />} />
-        <Route path="/favorites" element={<Favorites />} /> /*Endast via nedre navbar*/
-      </Routes>
+        <Routes>
+          <Route path="/" element={<Home />} />
+          <Route path="/about" element={<About />} />
+          <Route path="/products" element={<ProductList />} />
+          <Route path="/products/:id" element={<Product />} />
+          <Route path="/cart" element={<Cart />} />
+          <Route path="/order-confirmation" element={<OrderConfirmation />} />
+          <Route path="/categoriesBar" element={<CategoriesBar />} />
+          <Route path="/category/:category" element={<Category />} />
+          <Route path="/favorites" element={<Favorites />} /> /*Endast via nedre
+          navbar*/
+        </Routes>
       <Footer />
     </Router>
   );
