@@ -16,25 +16,6 @@ const AppRouter = () => {
   return (
     <Router>
       <Navbar />
-      <main>
-        <nav>
-          <ul>
-            <li>
-              <Link to="/">Hem</Link>
-            </li>
-            <li>
-              <Link to="/about">Om oss</Link>
-            </li>
-            {/* <li>
-            <Link to="/products">Produkter</Link>
-          </li> */}
-            <li>
-              <Link to="/cart">Kundvagn</Link>
-            </li>
-          </ul>
-        </nav>
-      </main>
-
         <Routes>
           <Route path="/" element={<Home />} />
           <Route path="/about" element={<About />} />
