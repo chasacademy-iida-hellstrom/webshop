@@ -9,6 +9,8 @@ import Navbar from "./components/Navbar";
 
 import CategoriesBar from "./components/CategoriesBar";
 import Category from "./pages/Category";
+import Favorites from "./pages/Favorites";
+import Footer from "./components/Footer";
 
 const AppRouter = () => {
   return (
@@ -22,14 +24,15 @@ const AppRouter = () => {
           <li>
             <Link to="/about">Om oss</Link>
           </li>
-          <li>
+          {/* <li>
             <Link to="/products">Produkter</Link>
-          </li>
+          </li> */}
           <li>
             <Link to="/cart">Kundvagn</Link>
           </li>
         </ul>
       </nav>
+
       <Routes>
         <Route path="/" element={<Home />} />
         <Route path="/about" element={<About />} />
@@ -39,7 +42,9 @@ const AppRouter = () => {
         <Route path="/order-confirmation" element={<OrderConfirmation />} />
         <Route path="/categoriesBar" element={<CategoriesBar />} />
         <Route path="/category/:category" element={<Category />} />
+        <Route path="/favorites" element={<Favorites />} /> /*Endast via nedre navbar*/
       </Routes>
+      <Footer />
     </Router>
   );
 };

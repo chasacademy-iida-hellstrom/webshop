@@ -14,6 +14,9 @@ body {
 
 main {
   flex-grow: 1;
+  padding-top: 20rem;
+  padding-bottom: 20rem;
+  overflow: auto;
 }
 
 /* ------- NAVBAR -------- */
@@ -26,7 +29,7 @@ main {
   flex-wrap: wrap;
   justify-content: space-evenly;
   align-items: center;
-  background-color: lightgrey;
+  background-color: rgb(255, 255, 255);
   z-index: 1000;
   height: 4rem;
 }
@@ -43,6 +46,7 @@ main {
   flex-wrap: wrap;
   list-style: none;
   gap: 4rem;
+  justify-content: flex-end;
 }
 
 ul {
@@ -50,7 +54,10 @@ ul {
   padding: 0;
 }
 
-/* استایل برای دکمه همبرگر */
+.logo-item {
+  display: none;
+}
+
 .menu-button {
   background: none;
   border: none;
@@ -59,10 +66,9 @@ ul {
   font-size: 24px;
 }
 
-/* استایل برای منوی کشویی دسته‌بندی‌ها */
 .dropdown-menu {
   position: absolute;
-  top: -220px; /* تغییر موقعیت برای نمایش زیر نوار ناوبری */
+  bottom: 70px;
   left: 10px;
   background: white;
   border-radius: 5px;
@@ -92,7 +98,10 @@ ul {
 .dropdown-menu li:hover {
   background: #f5f5f5;
 }
-/* استایل برای منوی کشویی دسته‌بندی‌ها */
+
+.text-capitalize {
+  text-transform: capitalize;
+}
 
 /* ------- PRODUCT LIST -------- */
 .product-list {
@@ -181,39 +190,38 @@ ul {
   width: 100%;
 }
 
-
 /* —— Modal overlay  ——— */
 .modal-overlay {
-    position: fixed;
-    top: 0;
-    left: 0;
-    width: 100%;
-    height: 100%;
-    background-color: rgba(0, 0, 0, 0.5);
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    z-index: 1000;
-  }
-  
-  /* ————  Modal content ———— */
-  .modal-content {
-    background-color: white;
-    padding: 20px;
-    border-radius: 5px;
-    width: 300px;
-    text-align: center;
-    position: relative;
-  }
-  
-  /*  ———— Close button ———— */
-  .close {
-    position: absolute;
-    top: 10px;
-    right: 10px;
-    font-size: 24px;
-    cursor: pointer;
-  }
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background-color: rgba(0, 0, 0, 0.5);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  z-index: 1000;
+}
+
+/* ————  Modal content ———— */
+.modal-content {
+  background-color: white;
+  padding: 20px;
+  border-radius: 5px;
+  width: 300px;
+  text-align: center;
+  position: relative;
+}
+
+/*  ———— Close button ———— */
+.close {
+  position: absolute;
+  top: 10px;
+  right: 10px;
+  font-size: 24px;
+  cursor: pointer;
+}
 
 .close {
   color: #aaaaaa;
@@ -293,6 +301,7 @@ ul {
   padding: 30px 20px;
   text-align: center;
   margin-top: auto;
+  display: none;
 }
 
 .footer-container {
@@ -348,8 +357,36 @@ footer-socials .social-icon {
   color: #666;
 }
 
-main {
-  flex-grow: 1;
+/* ------- BREADCRUMB -------- */
+/* Style the list */
+ul.breadcrumb {
+  padding: 10px 16px;
+  list-style: none;
+}
+
+/* Display list items side by side */
+ul.breadcrumb li {
+  display: inline;
+  font-size: 18px;
+  text-transform: capitalize;
+}
+
+/* Add a slash symbol (/) before/behind each list item */
+ul.breadcrumb li + li:before {
+  padding: 8px;
+  color: black;
+  content: "/\00a0";
+}
+
+/* Add a color to all links inside the list */
+ul.breadcrumb li a {
+  color: #666;
+  text-decoration: none;
+}
+
+/* Add a color on mouse-over */
+ul.breadcrumb li a:hover {
+  color: black;
 }
 
 /* ------- RESPONSIVE DESIGN -------- */
@@ -394,5 +431,38 @@ main {
     box-shadow: 0 2px 4px rgba(0, 0, 0, 0.6);
     padding: 1rem;
     margin: 1rem;
+  }
+
+  .navbar {
+    top: 0;
+    bottom: auto;
+    justify-content: space-between;
+  }
+
+  .navList {
+    gap: 2.5rem;
+    padding-right: 2rem;
+  }
+
+  .logo-item {
+    display: block;
+    padding-left: 2rem;
+  }
+
+  .logo {
+    width: 150px;
+    height: auto;
+  }
+
+  .dropdown-menu {
+    position: absolute;
+    top: 70px;
+    right: 10px;
+    left: auto;
+    bottom: auto;
+  }
+
+  .footer {
+    display: block;
   }
 }

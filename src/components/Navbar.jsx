@@ -7,6 +7,7 @@ import { useState, useEffect, useRef } from "react";
 import { Link, useLocation } from "react-router-dom";
 import SearchBar from "./SearchBar";
 
+
 const Navbar = () => {
   const [cartCount, setCartCount] = useState(0);
   const [isMenuOpen, setIsMenuOpen] = useState(false);
@@ -77,6 +78,11 @@ const Navbar = () => {
   return (
     <>
     <nav className="navbar">
+      <div className="logo-item">
+          <Link to="/">
+            <img src={Logo} alt="Logo" className="logo" />
+          </Link>
+        </div>
       <ul className="navList">
         <li>
           <Link to="search-button" onClick={() => setIsSearchOpen(!isSearchOpen)}>
@@ -89,7 +95,10 @@ const Navbar = () => {
           </Link>
         </li>
         <li>
-          <button className="menu-button" onClick={() => setIsMenuOpen(!isMenuOpen)}>
+          <button
+            className="menu-button"
+            onClick={() => setIsMenuOpen(!isMenuOpen)}
+          >
             <LuAlignJustify className="navIcons" />
           </button>
         </li>
@@ -109,9 +118,14 @@ const Navbar = () => {
       {isMenuOpen && (
         <div className="dropdown-menu" ref={menuRef}>
           <ul>
+            <li key="all">
+              <Link to="/products" onClick={() => setIsMenuOpen(false)}>
+                All Products
+              </Link>
+            </li>
             {categories.map((category) => (
               <li key={category}>
-                <Link to={`/category/${category}`} onClick={() => setIsMenuOpen(false)}>
+                <Link className="text-capitalize" to={`/category/${category}`} onClick={() => setIsMenuOpen(false)}>
                   {category}
                 </Link>
               </li>
@@ -127,4 +141,3 @@ const Navbar = () => {
 };
 
 export default Navbar;
-
