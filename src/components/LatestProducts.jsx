@@ -24,6 +24,7 @@ const LatestProducts = () => {
           slidesPerView={1}
           navigation={true}
           pagination={false}
+          loop={true}
           breakpoints={{
             640: { slidesPerView: 3 },
             768: { slidesPerView: 3 },

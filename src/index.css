@@ -209,8 +209,7 @@ ul {
 .latest-products-container {
   max-width: 1200px;
   margin: 0 auto;
-  padding-top: 20px;
-  padding-bottom: 20px;
+  padding: 0 20px;
   display: flex;
   flex-direction: column;
   align-items: center;
@@ -540,6 +539,11 @@ ul.breadcrumb li a {
 
 ul.breadcrumb li a:hover {
   color: black;
+}
+
+.about-page {
+  padding: 40px;
+  margin-top: -200px;
 }
 
 /* ------- RESPONSIVE DESIGN -------- */
