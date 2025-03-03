@@ -5,12 +5,15 @@ import { HiOutlineShoppingBag } from "react-icons/hi";
 import { MdOutlineSearch } from "react-icons/md";
 import { useState, useEffect, useRef } from "react";
 import { Link, useLocation } from "react-router-dom";
+import SearchBar from "./SearchBar";
 
 const Navbar = () => {
   const [cartCount, setCartCount] = useState(0);
   const [isMenuOpen, setIsMenuOpen] = useState(false);
+  const [isSearchOpen, setIsSearchOpen] = useState(false);
   const [categories, setCategories] = useState([]);
   const menuRef = useRef(null);
+  const searchRef = useRef(null);
   const location = useLocation(); // *Get the current location of the app*
 
   const updateCartCount = () => {
@@ -54,11 +57,29 @@ const Navbar = () => {
     setIsMenuOpen(false);
   }, [location.pathname]);
 
+  useEffect(() => {
+    const handleClickOutside = (event) => {
+      if (searchRef.current && !searchRef.current.contains(event.target)){
+        setIsSearchOpen(false);
+      }
+    };
+    document.addEventListener("mousedown", handleClickOutside);
+    return () => {
+      document.removeEventListener("mousdown", handleClickOutside);
+    };
+  }, []);
+
+  useEffect(() => {
+    setIsSearchOpen(false);
+  }, [location.pathname]);
+
+
   return (
+    <>
     <nav className="navbar">
       <ul className="navList">
         <li>
-          <Link to="/search">
+          <Link to="search-button" onClick={() => setIsSearchOpen(!isSearchOpen)}>
             <MdOutlineSearch className="navIcons" />
           </Link>
         </li>
@@ -99,6 +120,9 @@ const Navbar = () => {
         </div>
       )}
     </nav>
+
+    {isSearchOpen && <div ref={searchRef}><SearchBar /></div>}
+    </>
   );
 };
 
