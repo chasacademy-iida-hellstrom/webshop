@@ -1,12 +1,14 @@
-import { useEffect, useState } from "react";
+import { useEffect, useState, useRef } from "react";
 import { useNavigate } from "react-router-dom";
+import PropTypes from "prop-types";
 
-const SearchBar = () => {
+const SearchBar = ({onClose}) => {
   const [query, setQuery] = useState("");
   const navigate = useNavigate();
   const [products, setProducts] = useState([]);
   const [filteredProducts, setFilteredProducts] = useState([]);
   const [selectedIndex, setSelectedIndex] = useState(-1);
+  const searchContainerRef = useRef(null);
 
   useEffect(() =>{
     fetch("https://fakestoreapi.com/products")
@@ -31,13 +33,14 @@ const SearchBar = () => {
 
   const handleSelectProduct = (product) => {
     //setQuery(product.title);
-    setQuery("");
-    setFilteredProducts([]);
+   /*  setFilteredProducts([]); */
     navigate(`/products/${product.id}`);
+    setFilteredProducts([]);
+    setQuery(""); 
   };
 
   const handleKeyDown = (e) => {
-    if (e.key === "Arrodown") {
+    if (e.key === "ArroDown") {
       setSelectedIndex((prevIndex) =>
         prevIndex < filteredProducts.length -1 ? prevIndex + 1 : prevIndex
       );
@@ -47,11 +50,26 @@ const SearchBar = () => {
       e.preventDefault();
       handleSelectProduct(filteredProducts[selectedIndex]);
     }
-  }
+  };
+
+  useEffect(() => {
+    const handleClickOutside = (event) => {
+      if(
+        searchContainerRef.current &&
+        !searchContainerRef.current.contains(event.target)
+      ){
+        onClose();
+      }
+    };
+    document.addEventListener("mousedown", handleClickOutside);
+    return () => {
+      document.removeEventListener("mousedown", handleClickOutside);
+    };
+    }, [onClose]);
 
   return (
     <div style={styles.overlay}>
-      <div style={styles.searchContainer}>
+      <div ref={searchContainerRef} style={styles.searchContainer}>
       <form style={styles.searchForm}>
         <input
           type="text"
@@ -60,16 +78,19 @@ const SearchBar = () => {
           onKeyDown={handleKeyDown}
           placeholder="Sök produkter..."
           style={styles.searchInput}
+          autoFocus
         />
       </form>
 
       {filteredProducts.length > 0 && (
       <ul style={styles.dropdown}>
         {filteredProducts.slice(0,5).map((product, index) => (
-          <li key={product.id}
+          <li 
+          key={product.id}
           style={{
-            ...styles.dropdownItem, backgroundColor: selectedIndex === index ? "#f0f0f0" : "white", }}
-            onMouseEnter={() => setSelectedIndex(index)}
+            ...styles.dropdownItem,
+            backgroundColor: selectedIndex === index ? "#f0f0f0" : "white", }}
+          onMouseEnter={() => setSelectedIndex(index)}
           onClick={() => handleSelectProduct(product)}
           >
             {product.title}
@@ -82,6 +103,7 @@ const SearchBar = () => {
   );
 };
 
+
 // Stilar för searchbar-komponenten
 const styles = {
   /* container: {
@@ -91,18 +113,18 @@ const styles = {
     width: "100%",
     marginTop: "10px",
   }, */
-  overlay: {
+  /* overlay: {
     position: "fixed",
     top: "0",
     left: "0",
     width: "100vw",
     height: "100vh",
-    boxShadow: "0 4px 10px rgba(0, 0, 0, 0.5)",
+    /* backgroundColor: "rgba(0, 0, 0.5)", */
     display: "flex",
     justifyContent: "center",
     alignItems: "center",
-    zIndex: 1000,
-  },
+  /*   zIndex: 1000, 
+  }, */
   searchContainer: {
     position: "relative",
     /* top: "50px",
@@ -121,6 +143,14 @@ const styles = {
     display: "flex",
     alignItems: "center",
   },
+  /* CloseButton: {
+    position: "absolute",
+    top: "10px",
+    right: "15px",
+    background: "none",
+    fontSize: "20px",
+    coursor: "pointer",
+  }, */
   searchInput: {
     width: "100%",
     padding: "10px",
@@ -148,5 +178,9 @@ const styles = {
     borderBottom: "1px solid #ddd",
   },
 }; 
+
+SearchBar.propTypes = {
+  onClose: PropTypes.func.isRequired, // Definiera att onClose måste vara en funktion
+};
 
 export default SearchBar;
