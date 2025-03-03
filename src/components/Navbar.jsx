@@ -5,17 +5,15 @@ import { HiOutlineShoppingBag } from "react-icons/hi";
 import { MdOutlineSearch } from "react-icons/md";
 import { useState, useEffect, useRef } from "react";
 import { Link, useLocation } from "react-router-dom";
-import SearchBar from "./SearchBar";
+/* import SearchBar from "./SearchBar"; */
 import Logo from "../Images/logo.svg";
 
 const Navbar = () => {
   const [cartCount, setCartCount] = useState(0);
   const [isMenuOpen, setIsMenuOpen] = useState(false);
-  const [isSearchOpen, setIsSearchOpen] = useState(false);
   const [categories, setCategories] = useState([]);
   const [hasFavorites, setHasFavorites] = useState(false);
   const menuRef = useRef(null);
-  const searchRef = useRef(null);
   const location = useLocation(); // *Get the current location of the app*
 
   const updateCartCount = () => {
@@ -139,6 +137,7 @@ const Navbar = () => {
                   </Link>
                 </li>
               ))}
+              
               <li key="about">
                 <Link to="/about" onClick={() => setIsMenuOpen(false)}>
                   About Us
@@ -154,6 +153,62 @@ const Navbar = () => {
           <SearchBar />
         </div>
       )}
+      <ul className="navList">
+        <li>
+          <Link to="/search">
+            <MdOutlineSearch className="navIcons" />
+          </Link>
+        </li>
+        <li>
+          <Link to="/">
+            <FiHome className="navIcons" />
+          </Link>
+        </li>
+        <li>
+          <button
+            className="menu-button"
+            onClick={() => setIsMenuOpen(!isMenuOpen)}
+          >
+            <LuAlignJustify className="navIcons" />
+          </button>
+        </li>
+        <li>
+          <Link to="/favorites">
+            {hasFavorites ? (
+              <FaHeart className="navIcons text-red-500" />
+            ) : (
+              <FaRegHeart className="navIcons" />
+            )}
+          </Link>
+        </li>
+        <li>
+          <Link to="/cart" className="cart-link">
+            <HiOutlineShoppingBag className="navIcons" />
+            {cartCount > 0 && <span className="cart-count">{cartCount}</span>}
+          </Link>
+        </li>
+      </ul>
+
+      {isMenuOpen && (
+        <div className="dropdown-menu" ref={menuRef}>
+          <ul>
+            <li key="all">
+              <Link to="/products" onClick={() => setIsMenuOpen(false)}>
+                All Products
+              </Link>
+            </li>
+            {categories.map((category) => (
+              <li key={category}>
+                <Link className="text-capitalize" to={`/category/${category}`} onClick={() => setIsMenuOpen(false)}>
+                  {category}
+                </Link>
+              </li>
+            ))}
+          </ul>
+       {/*    <SearchBar/> */}
+        </div>
+      )}
+    </nav>
     </>
   );
 };
