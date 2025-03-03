@@ -1,8 +1,9 @@
 :root {
   --swiper-theme-color: #433f3f;
-  --swiper-slide-width: : 200px;
+  --swiper-slide-width: 200px;
   --swiper-slide-height: 200px;
 }
+
 .swiper-button-prev:after,
 .swiper-button-next:after {
   position: absolute;
@@ -37,7 +38,6 @@ main {
   padding-top: 20rem;
   padding-bottom: 20rem;
   overflow: auto;
-
   display: flex;
   flex-direction: column;
   flex-wrap: wrap;
@@ -51,7 +51,8 @@ a {
   color: black;
 }
 
-
+a:hover,
+.menu-button:hover {
   color: #e68900;
 }
 
@@ -233,7 +234,6 @@ ul {
   object-fit: contain;
   width: 100%;
   height: 200px;
-  object-fit: contain;
 }
 
 /* ------- PRODUCT CARD DETAILS -------- */
@@ -274,7 +274,6 @@ ul {
 }
 
 /* ——----- CART  -------——— */
-
 .cart-wrapper {
   height: 100vh;
   display: flex;
@@ -284,6 +283,7 @@ ul {
   flex-wrap: wrap;
   padding-bottom: 4rem;
 }
+
 .cart-container {
   max-width: 500px;
   display: flex;
