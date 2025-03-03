@@ -50,7 +50,7 @@ const SearchBar = () => {
   }
 
   return (
-    <div style={styles.overlay}>
+    <div className="search-container" style={styles.overlay}>
       <div style={styles.searchContainer}>
       <form style={styles.searchForm}>
         <input
