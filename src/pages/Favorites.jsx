@@ -1,28 +1,37 @@
-import React, { useState, useEffect } from "react";
+import { useState, useEffect } from "react";
+import ProductCard from "../components/ProductCard"; // Använder samma komponent
 
 const Favorites = () => {
     const [favorites, setFavorites] = useState([]);
 
     useEffect(() => {
-        const storedFavorites = JSON.parse(localStorage.getItem("favorites")) || [];
-        setFavorites(storedFavorites);
+        const syncFavorites = () => {
+            const storedFavorites = JSON.parse(localStorage.getItem("favorites")) || [];
+            setFavorites(storedFavorites);
+        };
+
+        // Lyssna på event när favoriter ändras
+        window.addEventListener("favoritesUpdated", syncFavorites);
+
+        // Kör en gång vid laddning
+        syncFavorites();
+
+        return () => {
+            window.removeEventListener("favoritesUpdated", syncFavorites);
+        };
     }, []);
 
     return (
-        <div className="favorites-container">
-            <h1 className="favorites-title">Mina Favoriter</h1>
+        <div className="p-4">
+            <h1 className="text-xl font-bold">Mina Favoriter</h1>
             {favorites.length === 0 ? (
-                <p className="no-favorites">Du har inga favoriter än.</p>
+                <p>Du har inga favoriter än.</p>
             ) : (
-                <div className="favorites-grid">
+                <ul className="product-list">
                     {favorites.map((product) => (
-                        <div key={product.id} className="favorite-card">
-                            <img src={product.image} alt={product.title} className="favorite-image" />
-                            <h3 className="favorite-title">{product.title}</h3>
-                            <p className="favorite-price">{product.price} SEK</p>
-                        </div>
+                        <ProductCard key={product.id} product={product} />
                     ))}
-                </div>
+                </ul>
             )}
         </div>
     );

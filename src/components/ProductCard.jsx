@@ -1,4 +1,4 @@
-import { useState } from "react";
+import { useState, useEffect } from "react";
 import { Link } from "react-router-dom";
 import { FaHeart, FaRegHeart } from "react-icons/fa";
 import PropTypes from "prop-types"; 
@@ -7,31 +7,46 @@ import useCart from "../hooks/useCart";
 const ProductCard = ({ product }) => {
   const { addToCart } = useCart();
   
-  const storedFavorites = JSON.parse(localStorage.getItem("favorites")) || [];
-  const isProductFavorite = storedFavorites.some((fav) => fav.id === product.id);
+  // Hämta favoriter från localStorage och kolla om produkten är favorit
+  const getStoredFavorites = () => JSON.parse(localStorage.getItem("favorites")) || [];
+  
+  const [isFavorite, setIsFavorite] = useState(() => {
+    return getStoredFavorites().some((fav) => fav.id === product.id);
+  });
 
-  const [isFavorite, setIsFavorite] = useState(isProductFavorite);
+  // Uppdatera när favoriter ändras globalt
+  useEffect(() => {
+    const syncFavorites = () => {
+      setIsFavorite(getStoredFavorites().some((fav) => fav.id === product.id));
+    };
+
+    window.addEventListener("favoritesUpdated", syncFavorites);
+
+    return () => {
+      window.removeEventListener("favoritesUpdated", syncFavorites);
+    };
+  }, [product.id]);
 
   const handleFavoriteClick = (e) => {
     e.preventDefault();
 
-    let updatedFavorites = JSON.parse(localStorage.getItem("favorites")) || [];
+    let updatedFavorites = getStoredFavorites();
 
-    if (!isFavorite) {
-      if (!updatedFavorites.some((fav) => fav.id === product.id)) {
-        updatedFavorites.push({
-          id: product.id,
-          title: product.title,
-          image: product.image,
-          price: product.price
-        });
-      }
-    } else {
+    if (isFavorite) {
       updatedFavorites = updatedFavorites.filter((fav) => fav.id !== product.id);
+    } else {
+      updatedFavorites.push({
+        id: product.id,
+        title: product.title,
+        image: product.image,
+        price: product.price
+      });
     }
 
     localStorage.setItem("favorites", JSON.stringify(updatedFavorites));
-    setIsFavorite(!isFavorite);
+    
+    // Uppdatera alla komponenter som lyssnar på favoriter
+    window.dispatchEvent(new Event("favoritesUpdated"));
   };
 
   return (
