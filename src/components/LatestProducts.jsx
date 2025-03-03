@@ -21,13 +21,13 @@ const LatestProducts = () => {
         <Swiper
           modules={[Navigation, Pagination]}
           spaceBetween={30}
-          centeredSlides={true}
+          centeredSlides={false}
           slidesPerView={1}
           navigation={true}
           pagination={false}
           breakpoints={{
-            640: { slidesPerView: 1 },
-            768: { slidesPerView: 1 },
+            640: { slidesPerView: 3 },
+            768: { slidesPerView: 3 },
           }}
         >
           {latestProducts.map((product) => (

@@ -1,5 +1,24 @@
 :root {
   --swiper-theme-color: #433f3f;
+  --swiper-slide-width: : 200px;
+  --swiper-slide-height: 200px;
+}
+.swiper-button-prev:after,
+.swiper-button-next:after {
+  position: absolute;
+  top: 50%;
+  transform: translateY(-50%);
+  font-size: 24px;
+  color: #333;
+  background: rgba(0, 0, 0, 0.1);
+  width: 40px;
+  height: 40px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border-radius: 50%;
+  cursor: pointer;
+  z-index: 10;
 }
 
 html,
@@ -19,7 +38,7 @@ main {
   padding-bottom: 20rem;
   overflow: auto;
 
-  display: flex;  
+  display: flex;
   flex-direction: column;
   flex-wrap: wrap;
   justify-content: center;
@@ -32,10 +51,9 @@ a {
   color: black;
 }
 
-a:hover{
+a:hover {
   color: #e68900;
 }
-
 
 /* ------- NAVBAR -------- */
 .navbar {
@@ -192,6 +210,7 @@ ul {
   align-items: center;
   justify-content: center;
   flex-wrap: wrap;
+  position: relative;
 }
 
 .latest-product-card {
@@ -201,14 +220,15 @@ ul {
   align-items: center;
   max-width: 350px;
   margin-bottom: 6rem;
+  background: transparent;
 }
 
 .latest-products-container img {
-  width: 100%;
-  height: auto;
+  object-fit: contain;
+  max-width: 50%;
+  max-height: 100%;
+  object-fit: cover;
 }
-
-
 
 /* ------- PRODUCT CARD DETAILS -------- */
 .product-card-details {
@@ -296,7 +316,7 @@ ul {
   background: black;
   color: white;
   font-size: large;
-  box-shadow: rgb( 0, 0, 0.5) 2px 2px 2px;
+  box-shadow: rgb(0, 0, 0.5) 2px 2px 2px;
   margin-bottom: 4rem;
 }
 
