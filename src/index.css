@@ -613,5 +613,6 @@ ul.breadcrumb li a:hover {
 
   .latest-products-container {
     position: relative;
-    bottom: 100px; 
+    bottom: 100px;
+  }
 }
