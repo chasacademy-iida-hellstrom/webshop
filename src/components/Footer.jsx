@@ -9,7 +9,7 @@ const Footer = () => {
           <h3>Kontakt uppgift</h3>
           <ul>
             <li>Telefon: 123456789</li>
-            <li>Email: Minimart@gmail</li>
+            <li>Email: Minimart@gmail.com</li>
           </ul>
         </div>
         <div className="footer-section">
