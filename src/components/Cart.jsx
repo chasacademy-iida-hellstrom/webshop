@@ -11,29 +11,28 @@ const closeModal = () => {
   setIsModalOpen(false);
 };
 return (
-  <div>
+  <div className="cart-wrapper">
    <h2>Din kundvagn</h2>
    {cart.length === 0 ? (
     <p>Din kundvagn är tom.</p>
    ) : (
     <>
-     <ul>
+     <ul className="cart-container">
       {cart.map(item => (
        <li key={item.id}>
         <p>{item.title}</p>
         <p>{item.price} kr</p>
         {/* Knappar för att öka/minska antal */}
-        <button onClick={() => updateQuantity(item.id, item.quantity - 1)}>−</button>
+        <button className="amount-button" onClick={() => updateQuantity(item.id, item.quantity - 1)}>−</button>
         <span>{item.quantity}</span>
-        <button onClick={() => updateQuantity(item.id, item.quantity + 1)}>+</button>
-        <button onClick={() => removeFromCart(item.id)}>Ta bort</button>
+        <button className="amount-button" onClick={() => updateQuantity(item.id, item.quantity + 1)}>+</button>
+        <button className="remove-button" onClick={() => removeFromCart(item.id)}>Ta bort</button>
        </li>
       ))}
      </ul>
      <h3>Totalt: {getTotalPrice()} kr</h3>
-     {/* Beställ button */}
-     <button onClick={openModal}>Beställ</button>
-     {/* Order Confirmation Modal */}
+     <button className="order-button" onClick={openModal}>Beställ</button>
+   
      {isModalOpen && (
       <OrderConfirmation closeModal={closeModal} />
      )}
