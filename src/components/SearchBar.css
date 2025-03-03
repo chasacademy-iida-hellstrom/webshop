@@ -1,6 +1,6 @@
 .overlay {
   position: fixed;
-  top: 0;
+  top: -10rem;
   left: 0;
   width: 100vw;
   height: 100vh;
@@ -55,4 +55,10 @@
 
 .dropdownItem.selected {
   background-color: #f0f0f0;
+}
+
+@media (max-width: 768px) {
+        .searchContainer {
+        width: 80%;
+        }
 }

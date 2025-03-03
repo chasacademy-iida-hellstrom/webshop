@@ -2,6 +2,7 @@
   --swiper-theme-color: #433f3f;
   --swiper-slide-width: 200px;
   --swiper-slide-height: 200px;
+  margin-top: 20rem;
 }
 
 .swiper-button-prev:after,
@@ -294,8 +295,8 @@ ul {
   flex-direction: column;
   justify-content: center;
   align-items: center;
-  flex-wrap: wrap;
   padding-bottom: 4rem;
+  margin-bottom: 15rem;
 }
 
 .cart-container {
