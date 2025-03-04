@@ -6,15 +6,14 @@ import useCart from "../hooks/useCart";
 
 const ProductCard = ({ product }) => {
   const { addToCart } = useCart();
-  
-  // Hämta favoriter från localStorage och kolla om produkten är favorit
+  const [isAdding, setIsAdding] = useState(false); 
+
   const getStoredFavorites = () => JSON.parse(localStorage.getItem("favorites")) || [];
-  
+
   const [isFavorite, setIsFavorite] = useState(() => {
     return getStoredFavorites().some((fav) => fav.id === product.id);
   });
 
-  // Uppdatera när favoriter ändras globalt
   useEffect(() => {
     const syncFavorites = () => {
       setIsFavorite(getStoredFavorites().some((fav) => fav.id === product.id));
@@ -44,9 +43,19 @@ const ProductCard = ({ product }) => {
     }
 
     localStorage.setItem("favorites", JSON.stringify(updatedFavorites));
-    
-    // Uppdatera alla komponenter som lyssnar på favoriter
     window.dispatchEvent(new Event("favoritesUpdated"));
+  };
+
+  const handleAddToCart = (e) => {
+    e.stopPropagation();
+    if (isAdding) return; 
+    setIsAdding(true);
+
+    addToCart(product);
+
+    setTimeout(() => {
+      setIsAdding(false);
+    }, 200); 
   };
 
   return (
@@ -64,10 +73,7 @@ const ProductCard = ({ product }) => {
       </Link>
       <button 
         className="add-to-cart-button" 
-        onClick={(e) => { 
-          e.stopPropagation();
-          addToCart(product);
-        }}
+        onClick={handleAddToCart} 
       >
         Lägg till i kundvagn
       </button>
@@ -75,7 +81,7 @@ const ProductCard = ({ product }) => {
   );
 };
 
-// ✅ Lägg till prop-validering
+
 ProductCard.propTypes = {
   product: PropTypes.shape({
     id: PropTypes.number.isRequired,
