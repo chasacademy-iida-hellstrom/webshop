@@ -28,23 +28,31 @@ const ProductCard = ({ product }) => {
 
   const handleFavoriteClick = (e) => {
     e.preventDefault();
-
-    let updatedFavorites = getStoredFavorites();
-
+  
+    let storedFavorites = JSON.parse(localStorage.getItem("favorites")) || [];
+    let favoritesMap = new Map(storedFavorites.map((fav) => [fav.id, fav]));
+  
     if (isFavorite) {
-      updatedFavorites = updatedFavorites.filter((fav) => fav.id !== product.id);
+      favoritesMap.delete(product.id);
     } else {
-      updatedFavorites.push({
+      favoritesMap.set(product.id, {
         id: product.id,
         title: product.title,
         image: product.image,
-        price: product.price
+        price: product.price,
       });
     }
 
-    localStorage.setItem("favorites", JSON.stringify(updatedFavorites));
+   
+    localStorage.setItem("favorites", JSON.stringify([...favoritesMap.values()]));
+
+   
+    setIsFavorite(!isFavorite);
+
+    
     window.dispatchEvent(new Event("favoritesUpdated"));
   };
+  
 
   const handleAddToCart = (e) => {
     e.stopPropagation();
@@ -74,13 +82,13 @@ const ProductCard = ({ product }) => {
       <button 
         className="add-to-cart-button" 
         onClick={handleAddToCart} 
+        disabled={isAdding}
       >
-        Lägg till i kundvagn
+        {isAdding ? "Adding..." : "Add to cart"}
       </button>
     </li>
   );
 };
-
 
 ProductCard.propTypes = {
   product: PropTypes.shape({

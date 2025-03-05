@@ -1,5 +1,8 @@
 import { useState, useEffect } from "react";
-import ProductCard from "../components/ProductCard"; // Använder samma komponent
+import { Link } from "react-router-dom";
+import ProductCard from "../components/ProductCard";
+import "../index.css"
+//import "../Favorites.css";
 
 const Favorites = () => {
   const [favorites, setFavorites] = useState([]);
@@ -11,10 +14,7 @@ const Favorites = () => {
       setFavorites(storedFavorites);
     };
 
-    // Lyssna på event när favoriter ändras
     window.addEventListener("favoritesUpdated", syncFavorites);
-
-    // Kör en gång vid laddning
     syncFavorites();
 
     return () => {
@@ -23,11 +23,17 @@ const Favorites = () => {
   }, []);
 
   return (
-    <div className="p-4">
-      <h1 className="text-xl font-bold">Mina Favoriter</h1>
+    <div className="favorites-container">
+      <h1 className="favorites-title">Mina Favoriter</h1>
       <section className="favorites-card-wrapper">
         {favorites.length === 0 ? (
-          <p>Du har inga favoriter än.</p>
+          <div className="empty-favorites">
+            <h1>Save your favorite items</h1>
+            <p>Want to save your favorite items? Just click on the heart icon found on the product image and it will show up here.</p>
+            <Link to="/products" className="favorite-button">
+              Browse now
+            </Link>
+          </div>
         ) : (
           <ul className="product-list">
             {favorites.map((product) => (
