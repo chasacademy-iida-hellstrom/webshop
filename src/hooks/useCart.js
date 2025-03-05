@@ -18,7 +18,6 @@ const useCart = () => {
 
   const addToCart = (product) => {
     setCart((prevCart) => {
-      // 🔥 Hämta den senaste versionen av cart från localStorage
       const storedCart = JSON.parse(localStorage.getItem("cart")) || prevCart;
       const existingItem = storedCart.find((item) => item.id === product.id);
 
@@ -31,7 +30,7 @@ const useCart = () => {
         updatedCart = [...storedCart, { ...product, quantity: 1 }];
       }
 
-      localStorage.setItem("cart", JSON.stringify(updatedCart)); // Uppdatera localStorage direkt
+      localStorage.setItem("cart", JSON.stringify(updatedCart));
       return updatedCart;
     });
   };
@@ -61,7 +60,14 @@ const useCart = () => {
     return cart.reduce((total, item) => total + item.price * item.quantity, 0).toFixed(2);
   };
 
-  return { cart, addToCart, removeFromCart, updateQuantity, getTotalPrice };
+  // 🆕 Funktion för att tömma kundvagnen
+  const clearCart = () => {
+    setCart([]); // Töm den lokala state
+    localStorage.removeItem("cart"); // Ta bort kundvagnen från localStorage
+    window.dispatchEvent(new Event("cartUpdated")); // Skicka en händelse för att uppdatera UI
+  };
+
+  return { cart, addToCart, removeFromCart, updateQuantity, getTotalPrice, clearCart };
 };
 
 export default useCart;
