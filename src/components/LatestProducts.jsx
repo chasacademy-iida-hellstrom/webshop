@@ -12,7 +12,7 @@ const LatestProducts = () => {
 
   return (
     <div className="latest-products-container">
-      <h2 className="latest-products-title">Nyheter</h2>
+      <h2 className="latest-products-title">News</h2>
 
       {error && <p className="text-center text-red-500">{error}</p>}
       {loading ? (

@@ -6,9 +6,10 @@ import useCart from "../hooks/useCart";
 
 const ProductCard = ({ product }) => {
   const { addToCart } = useCart();
-  
+  const [isAdding, setIsAdding] = useState(false); 
+
   const getStoredFavorites = () => JSON.parse(localStorage.getItem("favorites")) || [];
-  
+
   const [isFavorite, setIsFavorite] = useState(() => {
     return getStoredFavorites().some((fav) => fav.id === product.id);
   });
@@ -32,10 +33,8 @@ const ProductCard = ({ product }) => {
     let favoritesMap = new Map(storedFavorites.map((fav) => [fav.id, fav]));
   
     if (isFavorite) {
-    
       favoritesMap.delete(product.id);
     } else {
-    
       favoritesMap.set(product.id, {
         id: product.id,
         title: product.title,
@@ -43,14 +42,29 @@ const ProductCard = ({ product }) => {
         price: product.price,
       });
     }
-  
+
+   
     localStorage.setItem("favorites", JSON.stringify([...favoritesMap.values()]));
-  
+
+   
     setIsFavorite(!isFavorite);
-  
+
+    
     window.dispatchEvent(new Event("favoritesUpdated"));
   };
   
+
+  const handleAddToCart = (e) => {
+    e.stopPropagation();
+    if (isAdding) return; 
+    setIsAdding(true);
+
+    addToCart(product);
+
+    setTimeout(() => {
+      setIsAdding(false);
+    }, 200); 
+  };
 
   return (
     <li className="product-card" key={product.id}>
@@ -67,17 +81,14 @@ const ProductCard = ({ product }) => {
       </Link>
       <button 
         className="add-to-cart-button" 
-        onClick={(e) => { 
-          e.stopPropagation();
-          addToCart(product);
-        }}
+        onClick={handleAddToCart} 
+        disabled={isAdding}
       >
-        Add to cart
+        {isAdding ? "Adding..." : "Add to cart"}
       </button>
     </li>
   );
 };
-
 
 ProductCard.propTypes = {
   product: PropTypes.shape({

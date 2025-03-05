@@ -6,25 +6,25 @@ const Footer = () => {
     <footer className="footer">
       <div className="footer-container">
         <div className="footer-section">
-          <h3>Kontakt uppgift</h3>
+          <h3>Contact</h3>
           <ul>
-            <li>Telefon: 123456789</li>
+            <li>Telephone: 123456789</li>
             <li>Email: Minimart@gmail.com</li>
           </ul>
         </div>
         <div className="footer-section">
-          <h3>Om oss</h3>
+          <h3>About Us</h3>
           <ul>
             <li>
-              <Link to="/about">Mer info</Link>
+              <Link to="/about">Info</Link>
             </li>
           </ul>
         </div>
         <div className="footer-section">
-          <h3>Hjälp och information</h3>
+          <h3>Help & Information</h3>
           <ul>
             <li>
-              <Link to="/about">Mer info</Link>
+              <Link to="/about">Info</Link>
             </li>
           </ul>
         </div>

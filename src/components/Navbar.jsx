@@ -96,11 +96,7 @@ const Navbar = () => {
           </Link>
         </div>
         <ul className="navList">
-          <li>
-            <Link to="search-button" onClick={() => setIsSearchOpen(!isSearchOpen)}>
-              <MdOutlineSearch className="navIcons" />
-            </Link>
-          </li>
+      
           <li>
             <Link to="/">
               <FiHome className="navIcons" />
@@ -120,6 +116,11 @@ const Navbar = () => {
             <Link to="/cart" className="cart-link">
               <HiOutlineShoppingBag className="navIcons" />
               {cartCount > 0 && <span className="cart-count">{cartCount}</span>}
+            </Link>
+          </li>
+          <li>
+            <Link to="search-button" onClick={() => setIsSearchOpen(!isSearchOpen)}>
+              <MdOutlineSearch className="navIcons" />
             </Link>
           </li>
         </ul>
