@@ -31,7 +31,7 @@ body {
   background-color: #f0eadc;
   display: flex;
   flex-direction: column;
-  font-family:Arial, Helvetica, sans-serif
+  font-family: Arial, Helvetica, sans-serif;
 }
 
 main {
@@ -629,13 +629,13 @@ ul.breadcrumb li a:hover {
     margin: 1rem;
     padding: 1rem;
   }
-   
+
   .product-info p {
-  white-space: nowrap;      
-  overflow: hidden;        
-  text-overflow: ellipsis;  
-  max-width: 100%;          
-}
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    max-width: 100%;
+  }
 
   .product-card-details {
     display: flex;
@@ -721,7 +721,7 @@ ul.breadcrumb li a:hover {
   .about-page {
     padding-top: 2rem;
   }
-  
+
   .cart-wrapper {
     display: flex;
     flex-direction: column;
@@ -731,6 +731,7 @@ ul.breadcrumb li a:hover {
     max-width: 600px;
     margin: 0 auto;
     padding: 1.5rem;
+
     margin-top: 4rem;
     flex-grow: 1; 
     min-height: fit-content; 
