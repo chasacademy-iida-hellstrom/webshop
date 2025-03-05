@@ -314,6 +314,10 @@ div.latest-products-container {
   align-items: center;
 }
 
+.favorites-title {
+  text-align: center;
+}
+
 /* ---------- CART ----------- */
 .cart-link {
   position: relative;
@@ -334,13 +338,15 @@ div.latest-products-container {
 }
 
 .cart-wrapper {
-  height: 100vh;
+  /* height: 100vh; */
   display: flex;
   flex-direction: column;
   justify-content: center;
   align-items: center;
   padding-bottom: 4rem;
   padding-top: 2rem;
+  margin-top: 2rem;
+  margin-bottom: 10rem;
 }
 
 .cart-container {
@@ -355,13 +361,22 @@ div.latest-products-container {
   padding: 1rem 4rem;
   border-radius: 8px;
   margin-bottom: 1.5rem;
+  margin-top: 2rem;
 }
 
-.amount-button,
+.amount-button {
+  width: 2rem;
+  height: 2rem;
+  border-color: black;
+  border-width: 1px;
+  border-radius: 1rem;
+  background: white;
+  margin: 0 0.5rem;
+}
 .remove-button {
   width: 6rem;
   height: 2rem;
-  border-color: solid black;
+  border-color: black;
   border-width: 1px;
   border-radius: 1rem;
   background: white;
@@ -427,7 +442,7 @@ div.latest-products-container {
 
 .modal-content button:hover {
   background: #ea7900;
-  color: black;
+  color: white;
 }
 
 /*  ——--—— CLOSE BUTTON ——---—— */
@@ -499,7 +514,6 @@ div.latest-products-container {
   background: #f8f8f8;
   padding: 30px 20px;
   text-align: center;
-  margin-top: auto;
   display: none;
 }
 
@@ -594,7 +608,7 @@ ul.breadcrumb li a:hover {
   display: flex;
   flex-direction: column;
   justify-content: center;
-  align-items: left;
+  align-items: flex-start;
   flex-wrap: wrap;
 
   padding: 6rem 2rem 2rem 2rem;
@@ -612,7 +626,6 @@ ul.breadcrumb li a:hover {
 
   .product-card {
     width: 300px;
-    height: 350px;
     margin: 1rem;
     padding: 1rem;
   }
@@ -692,10 +705,10 @@ ul.breadcrumb li a:hover {
     margin-top: 1rem;
   }
 
-  .latest-products-container {
+  /* .latest-products-container {
     position: relative;
     bottom: 100px;
-  }
+  } */
 
   .p-4 {
     padding-top: 15rem;
@@ -718,7 +731,7 @@ ul.breadcrumb li a:hover {
     max-width: 600px;
     margin: 0 auto;
     padding: 1.5rem;
-    margin-top:2rem;
+    margin-top: 4rem;
     flex-grow: 1; 
     min-height: fit-content; 
 }
