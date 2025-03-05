@@ -17,23 +17,31 @@ const Product = () => {
 
   const toggleFavorite = () => {
     let updatedFavorites = JSON.parse(localStorage.getItem("favorites")) || [];
-
+  
     setIsFavorite((prevState) => {
-      const newFavoriteState = !prevState; 
-
+      const newFavoriteState = !prevState;
+  
       if (newFavoriteState) {
-        updatedFavorites.push(product);
+        if (!updatedFavorites.some((fav) => fav.id === product.id)) {
+          updatedFavorites.push({
+            id: product.id,
+            title: product.title,
+            image: product.image,
+            price: product.price
+          });
+        }
       } else {
         updatedFavorites = updatedFavorites.filter((fav) => fav.id !== product.id);
       }
-
+  
       localStorage.setItem("favorites", JSON.stringify(updatedFavorites));
-
+      window.dispatchEvent(new Event("favoritesUpdated")); // Uppdatera globalt
       return newFavoriteState;
     });
   };
+  
 
-  if (!product) return <p>Produkten hittades inte.</p>;
+  if (!product) return <p>Product was not found</p>;
 
   return (
     <>

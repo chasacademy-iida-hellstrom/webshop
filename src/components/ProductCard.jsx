@@ -7,14 +7,12 @@ import useCart from "../hooks/useCart";
 const ProductCard = ({ product }) => {
   const { addToCart } = useCart();
   
-  // Hämta favoriter från localStorage och kolla om produkten är favorit
   const getStoredFavorites = () => JSON.parse(localStorage.getItem("favorites")) || [];
   
   const [isFavorite, setIsFavorite] = useState(() => {
     return getStoredFavorites().some((fav) => fav.id === product.id);
   });
 
-  // Uppdatera när favoriter ändras globalt
   useEffect(() => {
     const syncFavorites = () => {
       setIsFavorite(getStoredFavorites().some((fav) => fav.id === product.id));
@@ -29,25 +27,30 @@ const ProductCard = ({ product }) => {
 
   const handleFavoriteClick = (e) => {
     e.preventDefault();
-
-    let updatedFavorites = getStoredFavorites();
-
+  
+    let storedFavorites = JSON.parse(localStorage.getItem("favorites")) || [];
+    let favoritesMap = new Map(storedFavorites.map((fav) => [fav.id, fav]));
+  
     if (isFavorite) {
-      updatedFavorites = updatedFavorites.filter((fav) => fav.id !== product.id);
+    
+      favoritesMap.delete(product.id);
     } else {
-      updatedFavorites.push({
+    
+      favoritesMap.set(product.id, {
         id: product.id,
         title: product.title,
         image: product.image,
-        price: product.price
+        price: product.price,
       });
     }
-
-    localStorage.setItem("favorites", JSON.stringify(updatedFavorites));
-    
-    // Uppdatera alla komponenter som lyssnar på favoriter
+  
+    localStorage.setItem("favorites", JSON.stringify([...favoritesMap.values()]));
+  
+    setIsFavorite(!isFavorite);
+  
     window.dispatchEvent(new Event("favoritesUpdated"));
   };
+  
 
   return (
     <li className="product-card" key={product.id}>
@@ -69,13 +72,13 @@ const ProductCard = ({ product }) => {
           addToCart(product);
         }}
       >
-        Lägg till i kundvagn
+        Add to cart
       </button>
     </li>
   );
 };
 
-// ✅ Lägg till prop-validering
+
 ProductCard.propTypes = {
   product: PropTypes.shape({
     id: PropTypes.number.isRequired,
