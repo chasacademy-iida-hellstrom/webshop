@@ -3,11 +3,17 @@ import useCart from "../hooks/useCart";
 import OrderConfirmation from "./OrderConfirmation";
 
 const Cart = () => {
-  const { cart, removeFromCart, updateQuantity, getTotalPrice } = useCart();
+  const { cart, removeFromCart, updateQuantity, getTotalPrice, clearCart } = useCart();
   const [isModalOpen, setIsModalOpen] = useState(false);
 
-  const openModal = () => setIsModalOpen(true);
-  const closeModal = () => setIsModalOpen(false);
+  const handleOrder = () => {
+    setIsModalOpen(true); // Öppna modalen först
+  };
+
+  const closeModal = () => {
+    clearCart(); // 🛒 Töm kundvagnen när modalen stängs
+    setIsModalOpen(false); // Stäng modalen
+  };
 
   return (
     <div className="cart-wrapper">
@@ -45,10 +51,11 @@ const Cart = () => {
             ))}
           </ul>
           <h3>Totalt: {getTotalPrice()} kr</h3>
-          <button className="order-button" onClick={openModal}>
+          <button className="order-button" onClick={handleOrder}>
             Beställ
           </button>
 
+          {/* Skicka `closeModal` till OrderConfirmation */}
           {isModalOpen && <OrderConfirmation closeModal={closeModal} />}
         </>
       )}
