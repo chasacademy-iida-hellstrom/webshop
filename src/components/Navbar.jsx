@@ -5,18 +5,18 @@ import { HiOutlineShoppingBag } from "react-icons/hi";
 import { MdOutlineSearch } from "react-icons/md";
 import { useState, useEffect, useRef } from "react";
 import { Link, useLocation, useNavigate } from "react-router-dom";
-import SearchBar from "./SearchBar"; // Uncomment this line
+//import SearchBar from "./SearchBar"; // Uncomment this line
 import Logo from "../Images/logo.svg";
-import "./SearchBar.css";
+//import "./SearchBar.css";
 
 const Navbar = () => {
   const [cartCount, setCartCount] = useState(0);
   const [isMenuOpen, setIsMenuOpen] = useState(false);
   const [categories, setCategories] = useState([]);
   const [hasFavorites, setHasFavorites] = useState(false);
-  const [isSearchOpen, setIsSearchOpen] = useState(false); // Ensure this line is added
+  //const [isSearchOpen, setIsSearchOpen] = useState(false); // Ensure this line is added
   const menuRef = useRef(null);
-  const searchRef = useRef(null); // Ensure this line is added
+  //const searchRef = useRef(null); // Ensure this line is added
   const location = useLocation(); // *Get the current location of the app*
   const navigate = useNavigate();
   const updateCartCount = () => {
@@ -72,7 +72,7 @@ const Navbar = () => {
     setIsMenuOpen(false);
   }, [location.pathname]);
 
-  useEffect(() => {
+  /* useEffect(() => {
     const handleClickOutside = (event) => {
       if (searchRef.current && !searchRef.current.contains(event.target)) {
         setIsSearchOpen(false);
@@ -82,12 +82,12 @@ const Navbar = () => {
     return () => {
       document.removeEventListener("mousedown", handleClickOutside);
     };
-  }, []);
+  }, []); */
 
-  useEffect(() => {
+  /* useEffect(() => {
     setIsSearchOpen(false);
   }, [location.pathname]);
-
+ */
   return (
     <>
       <nav className="navbar">
@@ -152,11 +152,11 @@ const Navbar = () => {
         )}
       </nav>
 
-      {isSearchOpen && (
+      
+     {/*  )}{isSearchOpen && (
         <div ref={searchRef}>
           <SearchBar />
-        </div>
-      )}
+        </div> */}
     </>
   );
 };
