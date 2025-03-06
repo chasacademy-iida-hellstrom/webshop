@@ -1,12 +1,19 @@
+import PropTypes from "prop-types";
+
 const OrderConfirmation = ({ closeModal }) => {
   return (
     <div className="modal-overlay" onClick={closeModal}>
-     <div className="modal-content">
-      <h2>Tack för ditt köp!</h2>
-      <p>Din beställning har bekräftats.</p>
-      <button onClick={closeModal}>Stäng</button>
-     </div>
+      <div className="modal-content">
+        <h2>Thank you for your purchase!</h2>
+        <p>Your order has been confirmed.</p>
+        <button onClick={closeModal}>Close</button>
+      </div>
     </div>
   );
-  };
-  export default OrderConfirmation;  
+};
+
+OrderConfirmation.propTypes = {
+  closeModal: PropTypes.func.isRequired,
+};
+
+export default OrderConfirmation;

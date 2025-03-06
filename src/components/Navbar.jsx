@@ -5,7 +5,7 @@ import { HiOutlineShoppingBag } from "react-icons/hi";
 import { MdOutlineSearch } from "react-icons/md";
 import { useState, useEffect, useRef } from "react";
 import { Link, useLocation, useNavigate } from "react-router-dom";
-import SearchBar from "./SearchBar"; // Uncomment this line
+import SearchBar from "./SearchBar";
 import Logo from "../Images/logo.svg";
 import "./SearchBar.css";
 
@@ -14,10 +14,10 @@ const Navbar = () => {
   const [isMenuOpen, setIsMenuOpen] = useState(false);
   const [categories, setCategories] = useState([]);
   const [hasFavorites, setHasFavorites] = useState(false);
-  const [isSearchOpen, setIsSearchOpen] = useState(false); // Ensure this line is added
+  const [isSearchOpen, setIsSearchOpen] = useState(false);
   const menuRef = useRef(null);
-  const searchRef = useRef(null); // Ensure this line is added
-  const location = useLocation(); // *Get the current location of the app*
+  const searchRef = useRef(null);
+  const location = useLocation();
   const navigate = useNavigate();
   const updateCartCount = () => {
     const cart = JSON.parse(localStorage.getItem("cart")) || [];
@@ -97,7 +97,6 @@ const Navbar = () => {
           </Link>
         </div>
         <ul className="navList">
-      
           <li>
             <Link to="/">
               <FiHome className="navIcons" />
@@ -141,7 +140,7 @@ const Navbar = () => {
                   </Link>
                 </li>
               ))}
-              
+
               <li key="about">
                 <Link to="/about" onClick={() => setIsMenuOpen(false)}>
                   About Us
