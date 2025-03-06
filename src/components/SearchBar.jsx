@@ -73,7 +73,7 @@ const SearchBar = ({ onClose }) => {
             value={query}
             onChange={(e) => setQuery(e.target.value)}
             onKeyDown={handleKeyDown}
-            placeholder="Sök produkter..."
+            placeholder="Search products..."
             className="searchInput"
             autoFocus
           />

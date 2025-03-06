@@ -1,17 +1,17 @@
 
-import { useNavigate } from "react-router-dom";
+//import { useNavigate } from "react-router-dom";
 import SearchBar from "../components/SearchBar"
 
 const SearchPage = () => {
-    const navigate = useNavigate();
+    //const navigate = useNavigate();
   return (
-    <div style={styles.container}>
-      <SearchBar onClose={() => navigate(-1)}/>
-    </div>
+   <div>
+    <SearchBar />
+   </div>
   );
 };
 
-const styles = {
+/* const styles = {
     container: {
         display: "flex",
         justifyContent: "center",
@@ -19,5 +19,5 @@ const styles = {
         height: "100vh",
     },
 };
-
+ */
 export default SearchPage;
