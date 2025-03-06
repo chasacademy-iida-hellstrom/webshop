@@ -11,7 +11,7 @@
 
 .searchContainer {
   position: relative;
-  padding: 30px;
+  padding: 20px;
   background-color: white;
   border-radius: 5px;
   box-shadow: 0 4px 10px rgba(0, 0, 0, 0.2);
@@ -56,6 +56,19 @@
 .dropdownItem.selected {
   background-color: #f0f0f0;
 }
+
+.search-button {
+  background: none;
+  border: none;
+  cursor: pointer;
+  color: black;
+  font-size: 24px;
+}
+
+.search-button:hover {
+  color: #e68900;
+}
+
 
 @media (min-width: 768px) {
         .searchContainer {

@@ -4,9 +4,10 @@ import { FaHeart, FaRegHeart } from "react-icons/fa6";
 import { HiOutlineShoppingBag } from "react-icons/hi";
 import { MdOutlineSearch } from "react-icons/md";
 import { useState, useEffect, useRef } from "react";
-import { Link, useLocation } from "react-router-dom";
+import { Link, useLocation, useNavigate } from "react-router-dom";
 import SearchBar from "./SearchBar"; // Uncomment this line
 import Logo from "../Images/logo.svg";
+import "./SearchBar.css";
 
 const Navbar = () => {
   const [cartCount, setCartCount] = useState(0);
@@ -17,7 +18,7 @@ const Navbar = () => {
   const menuRef = useRef(null);
   const searchRef = useRef(null); // Ensure this line is added
   const location = useLocation(); // *Get the current location of the app*
-
+  const navigate = useNavigate();
   const updateCartCount = () => {
     const cart = JSON.parse(localStorage.getItem("cart")) || [];
     const totalItems = cart.reduce((total, item) => total + item.quantity, 0);
@@ -119,9 +120,9 @@ const Navbar = () => {
             </Link>
           </li>
           <li>
-            <Link to="search-button" onClick={() => setIsSearchOpen(!isSearchOpen)}>
+            <button className="search-button" onClick={() => navigate("/search")}>
               <MdOutlineSearch className="navIcons" />
-            </Link>
+            </button>
           </li>
         </ul>
 
