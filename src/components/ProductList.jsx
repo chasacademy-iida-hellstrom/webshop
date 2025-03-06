@@ -6,14 +6,14 @@ const ProductList = () => {
 
   console.log("Rendering ProductList:", products);
 
-  if (loading) return <p>Laddar produkter...</p>;
-  if (error) return <p>Ett fel uppstod: {error}</p>;
+  if (loading) return <p>Loading...</p>;
+  if (error) return <p>Something is wrong! {error}</p>;
 
   return (
     <div>
-      <h2>Produkter</h2>
+      <h2>Products</h2>
       {products.length === 0 ? (
-        <p>Inga produkter hittades.</p>
+        <p>ٔNo products found</p>
       ) : (
         <ul className="product-list">
           {products.map((product) => (

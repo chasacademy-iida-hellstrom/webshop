@@ -7,55 +7,43 @@ const Cart = () => {
   const [isModalOpen, setIsModalOpen] = useState(false);
 
   const handleOrder = () => {
-    setIsModalOpen(true); // Öppna modalen först
+    setIsModalOpen(true);
   };
 
   const closeModal = () => {
-    clearCart(); // 🛒 Töm kundvagnen när modalen stängs
-    setIsModalOpen(false); // Stäng modalen
+    clearCart(); //
+    setIsModalOpen(false);
   };
 
   return (
     <div className="cart-wrapper">
-      <h2>Din kundvagn</h2>
+      <h2>Shopping Bag</h2>
 
       {cart.length === 0 ? (
-        <p>Din kundvagn är tom.</p>
+        <p>Your bag is empty.</p>
       ) : (
         <>
           <ul className="cart-container">
             {cart.map((item) => (
               <li key={item.id}>
                 <p>{item.title}</p>
-                <p>{item.price} kr</p>
-                <button
-                  className="amount-button"
-                  onClick={() => updateQuantity(item.id, item.quantity - 1)}
-                >
-                  −
-                </button>
+                <p>{item.price} $</p>
+                <button className="amount-button" onClick={() => updateQuantity(item.id, item.quantity - 1)}></button>
                 <span>{item.quantity}</span>
-                <button
-                  className="amount-button"
-                  onClick={() => updateQuantity(item.id, item.quantity + 1)}
-                >
+                <button className="amount-button" onClick={() => updateQuantity(item.id, item.quantity + 1)}>
                   +
                 </button>
-                <button
-                  className="remove-button"
-                  onClick={() => removeFromCart(item.id)}
-                >
-                  Ta bort
+                <button className="remove-button" onClick={() => removeFromCart(item.id)}>
+                  Remove
                 </button>
               </li>
             ))}
           </ul>
-          <h3>Totalt: {getTotalPrice()} kr</h3>
+          <h3>Total: {getTotalPrice()} $</h3>
           <button className="order-button" onClick={handleOrder}>
-            Beställ
+            Order
           </button>
 
-          {/* Skicka `closeModal` till OrderConfirmation */}
           {isModalOpen && <OrderConfirmation closeModal={closeModal} />}
         </>
       )}
