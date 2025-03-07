@@ -7,7 +7,7 @@ import { useState, useEffect, useRef } from "react";
 import { Link, useLocation, useNavigate } from "react-router-dom";
 import SearchBar from "./SearchBar";
 import Logo from "../Images/logo.svg";
-import "./SearchBar.css";
+import "../CSS/SearchBar.css";
 
 const Navbar = () => {
   const [cartCount, setCartCount] = useState(0);
@@ -103,13 +103,21 @@ const Navbar = () => {
             </Link>
           </li>
           <li>
-            <button className="menu-button" onClick={() => setIsMenuOpen(!isMenuOpen)}>
+            <button
+              className="menu-button"
+              aria-label="menu icon"
+              onClick={() => setIsMenuOpen(!isMenuOpen)}
+            >
               <LuAlignJustify className="navIcons" />
             </button>
           </li>
           <li>
             <Link to="/favorites">
-              {hasFavorites ? <FaHeart className="navIcons text-red-500" /> : <FaRegHeart className="navIcons" />}
+              {hasFavorites ? (
+                <FaHeart className="navIcons text-red-500" />
+              ) : (
+                <FaRegHeart className="navIcons" />
+              )}
             </Link>
           </li>
           <li>
@@ -119,7 +127,11 @@ const Navbar = () => {
             </Link>
           </li>
           <li>
-            <button className="search-button" onClick={() => navigate("/search")}>
+            <button
+              className="search-button"
+              aria-label="search icon"
+              onClick={() => navigate("/search")}
+            >
               <MdOutlineSearch className="navIcons" />
             </button>
           </li>
@@ -135,7 +147,11 @@ const Navbar = () => {
               </li>
               {categories.map((category) => (
                 <li key={category}>
-                  <Link className="text-capitalize" to={`/category/${category}`} onClick={() => setIsMenuOpen(false)}>
+                  <Link
+                    className="text-capitalize"
+                    to={`/category/${category}`}
+                    onClick={() => setIsMenuOpen(false)}
+                  >
                     {category}
                   </Link>
                 </li>

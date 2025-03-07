@@ -1,4 +1,4 @@
-import "./MobileHeader.css";
+import "../CSS/MobileHeader.css";
 
 const MobileHeader = () => {
   return (

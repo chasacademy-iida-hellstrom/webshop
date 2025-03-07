@@ -1,12 +1,4 @@
 .overlay {
-  /* position: fixed;
-  top: -10rem;
-  left: 0;
-  width: 100vw;
-  height: 100vh;
-  display: flex;
-  justify-content: center;
-  align-items: center; */
   min-height: 100vh;
   display: flex;
   flex-direction: column;
@@ -74,9 +66,8 @@
   color: #e68900;
 }
 
-
 @media (min-width: 768px) {
-        .searchContainer {
-        width: 35%;
-        }
+  .searchContainer {
+    width: 35%;
+  }
 }

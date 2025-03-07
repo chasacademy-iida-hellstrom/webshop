@@ -3,7 +3,8 @@ import useCart from "../hooks/useCart";
 import OrderConfirmation from "./OrderConfirmation";
 
 const Cart = () => {
-  const { cart, removeFromCart, updateQuantity, getTotalPrice, clearCart } = useCart();
+  const { cart, removeFromCart, updateQuantity, getTotalPrice, clearCart } =
+    useCart();
   const [isModalOpen, setIsModalOpen] = useState(false);
 
   const handleOrder = () => {
@@ -28,19 +29,39 @@ const Cart = () => {
               <li key={item.id}>
                 <p>{item.title}</p>
                 <p>{item.price} $</p>
-                <button className="amount-button" onClick={() => updateQuantity(item.id, item.quantity - 1)}></button>
-                <span>{item.quantity}</span>
-                <button className="amount-button" onClick={() => updateQuantity(item.id, item.quantity + 1)}>
-                  +
-                </button>
-                <button className="remove-button" onClick={() => removeFromCart(item.id)}>
-                  Remove
-                </button>
+                <div className="cart-button-container">
+                  <button
+                    className="amount-button"
+                    aria-label="Decrease quantity"
+                    onClick={() => updateQuantity(item.id, item.quantity - 1)}
+                  >
+                    -
+                  </button>
+                  <span>{item.quantity}</span>
+                  <button
+                    className="amount-button"
+                    aria-label="increase quantity"
+                    onClick={() => updateQuantity(item.id, item.quantity + 1)}
+                  >
+                    +
+                  </button>
+                  <button
+                    className="remove-button"
+                    aria-label="remove item"
+                    onClick={() => removeFromCart(item.id)}
+                  >
+                    Remove
+                  </button>
+                </div>
               </li>
             ))}
           </ul>
           <h3>Total: {getTotalPrice()} $</h3>
-          <button className="order-button" onClick={handleOrder}>
+          <button
+            className="order-button"
+            aria-label="order button"
+            onClick={handleOrder}
+          >
             Order
           </button>
 

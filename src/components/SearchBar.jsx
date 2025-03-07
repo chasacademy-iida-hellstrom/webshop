@@ -1,7 +1,7 @@
 import { useEffect, useState, useRef } from "react";
 import { useNavigate } from "react-router-dom";
 import PropTypes from "prop-types";
-import "./SearchBar.css";
+import "../CSS/SearchBar.css";
 const SearchBar = ({ onClose }) => {
   const [query, setQuery] = useState("");
   const navigate = useNavigate();
@@ -19,7 +19,9 @@ const SearchBar = ({ onClose }) => {
 
   useEffect(() => {
     if (query.trim() !== "") {
-      const filtered = products.filter((product) => product.title.toLowerCase().includes(query.toLowerCase()));
+      const filtered = products.filter((product) =>
+        product.title.toLowerCase().includes(query.toLowerCase())
+      );
       setFilteredProducts(filtered);
       setSelectedIndex(-1);
     } else {
@@ -35,7 +37,9 @@ const SearchBar = ({ onClose }) => {
 
   const handleKeyDown = (e) => {
     if (e.key === "ArrowDown") {
-      setSelectedIndex((prevIndex) => (prevIndex < filteredProducts.length - 1 ? prevIndex + 1 : prevIndex));
+      setSelectedIndex((prevIndex) =>
+        prevIndex < filteredProducts.length - 1 ? prevIndex + 1 : prevIndex
+      );
     } else if (e.key === "ArrowUp") {
       setSelectedIndex((prevIndex) => (prevIndex > 0 ? prevIndex - 1 : 0));
     } else if (e.key === "Enter" && selectedIndex !== -1) {
@@ -46,7 +50,10 @@ const SearchBar = ({ onClose }) => {
 
   useEffect(() => {
     const handleClickOutside = (event) => {
-      if (searchContainerRef.current && !searchContainerRef.current.contains(event.target)) {
+      if (
+        searchContainerRef.current &&
+        !searchContainerRef.current.contains(event.target)
+      ) {
         onClose();
       }
     };

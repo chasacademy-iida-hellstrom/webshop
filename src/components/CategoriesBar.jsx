@@ -16,7 +16,11 @@ function CategoriesBar() {
         All Products
       </Link>
       {categories.map((category) => (
-        <Link key={category} to={`/category/${category}`} className="category-link">
+        <Link
+          key={category}
+          to={`/category/${category}`}
+          className="category-link"
+        >
           {category}
         </Link>
       ))}

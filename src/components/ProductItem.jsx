@@ -3,7 +3,9 @@ import PropTypes from "prop-types";
 
 const ProductItem = ({ product }) => {
   const storedFavorites = JSON.parse(localStorage.getItem("favorites")) || [];
-  const isProductFavorite = storedFavorites.some((fav) => fav.id === product.id);
+  const isProductFavorite = storedFavorites.some(
+    (fav) => fav.id === product.id
+  );
 
   const [isFavorite, setIsFavorite] = useState(isProductFavorite);
 
@@ -13,7 +15,9 @@ const ProductItem = ({ product }) => {
     if (!isFavorite) {
       updatedFavorites.push(product);
     } else {
-      updatedFavorites = updatedFavorites.filter((fav) => fav.id !== product.id);
+      updatedFavorites = updatedFavorites.filter(
+        (fav) => fav.id !== product.id
+      );
     }
 
     localStorage.setItem("favorites", JSON.stringify(updatedFavorites));
@@ -21,7 +25,11 @@ const ProductItem = ({ product }) => {
   };
   return (
     <div className="border p-4">
-      <img src={product.image} alt={product.name} className="w-full h-40 object-contain" />
+      <img
+        src={product.image}
+        alt={product.name}
+        className="w-full h-40 object-contain"
+      />
       <h3 className="mt-2 font-semibold">{product.name}</h3>
       <p className="text-gray-700">{product.description}</p>
       <p className="text-green-600 font-bold">{product.price}</p>
