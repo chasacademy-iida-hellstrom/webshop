@@ -35,7 +35,11 @@ const LatestProducts = () => {
             <SwiperSlide key={product.id}>
               <div className="latest-product-card">
                 <Link to={`/products/${product.id}`}>
-                  <img src={product.image} alt={product.title} className="product-image" />
+                  <img
+                    src={product.image}
+                    alt={product.title}
+                    className="product-image"
+                  />
                 </Link>
                 <div className="product-info">
                   <Link to={`/products/${product.id}`}>

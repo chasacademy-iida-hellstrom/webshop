@@ -24,7 +24,9 @@ const useCart = () => {
       let updatedCart;
       if (existingItem) {
         updatedCart = storedCart.map((item) =>
-          item.id === product.id ? { ...item, quantity: item.quantity + 1 } : item
+          item.id === product.id
+            ? { ...item, quantity: item.quantity + 1 }
+            : item
         );
       } else {
         updatedCart = [...storedCart, { ...product, quantity: 1 }];
@@ -48,14 +50,18 @@ const useCart = () => {
       if (newQuantity <= 0) {
         return prevCart.filter((item) => item.id !== id);
       }
-      const updatedCart = prevCart.map((item) => (item.id === id ? { ...item, quantity: newQuantity } : item));
+      const updatedCart = prevCart.map((item) =>
+        item.id === id ? { ...item, quantity: newQuantity } : item
+      );
       localStorage.setItem("cart", JSON.stringify(updatedCart));
       return updatedCart;
     });
   };
 
   const getTotalPrice = () => {
-    return cart.reduce((total, item) => total + item.price * item.quantity, 0).toFixed(2);
+    return cart
+      .reduce((total, item) => total + item.price * item.quantity, 0)
+      .toFixed(2);
   };
 
   const clearCart = () => {
@@ -64,7 +70,14 @@ const useCart = () => {
     window.dispatchEvent(new Event("cartUpdated"));
   };
 
-  return { cart, addToCart, removeFromCart, updateQuantity, getTotalPrice, clearCart };
+  return {
+    cart,
+    addToCart,
+    removeFromCart,
+    updateQuantity,
+    getTotalPrice,
+    clearCart,
+  };
 };
 
 export default useCart;

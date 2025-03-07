@@ -24,6 +24,7 @@
 
 html,
 body {
+  overflow-x: hidden;
   min-height: 100%;
   margin: 0;
   padding: 0;
@@ -146,7 +147,7 @@ div.latest-products-container {
   justify-content: center;
   align-items: center;
   gap: 2rem;
-  margin-top: 16rem;
+  margin-top: 8rem;
 }
 
 /* ------- PRODUCT LIST -------- */
@@ -302,6 +303,8 @@ h2 {
   flex-direction: column;
   justify-content: space-evenly;
   align-items: center;
+  max-width: 100%;
+  overflow-x: hidden;
 }
 
 .favorites-container {
@@ -310,7 +313,6 @@ h2 {
   justify-content: center;
   align-items: center;
   min-height: 100vh;
-  padding-top: 1rem;
 }
 
 .favorites-card-wrapper {
@@ -324,12 +326,12 @@ h2 {
 .empty-favorites {
   display: flex;
   flex-direction: column;
-  justify-content: center; 
-  align-items:flex-start; 
+  justify-content: center;
+  align-items: flex-start;
   text-align: left;
-  gap: 1rem; 
+  gap: 1rem;
   width: 80%;
-  margin: 0 auto; 
+  margin: 0 auto;
   padding-top: 2rem;
 }
 
@@ -361,12 +363,8 @@ h2 {
   padding-bottom: 4rem;
 }
 
-.cart-wrapper h2 {
-   padding-top: 1rem;
-}
-
 .cart-container {
-  max-width: 500px;
+  max-width: 600px;
   display: flex;
   flex-direction: column;
   justify-content: center;
@@ -374,28 +372,36 @@ h2 {
 
 .cart-container li {
   background-color: rgb(231, 222, 209);
-  padding: 1rem 4rem;
+  padding: 1rem 2rem;
   border-radius: 8px;
   margin-bottom: 1.5rem;
 }
 
+.cart-button-container {
+  display: flex;
+  justify-content: flex-start;
+  align-items: center;
+}
+
 .amount-button {
-  width: 2rem;
-  height: 2rem;
+  width: 2.2rem;
+  height: 2.2rem;
   border-color: black;
   border-width: 1px;
   border-radius: 3rem;
-  background: white;
-  margin: 0 0.5rem;
+  background: rgb(255, 255, 255);
+  margin: 0 1rem;
+  font-weight: 600;
 }
 .remove-button {
-  width: 6rem;
+  width: 6.5rem;
   height: 2rem;
-  border-color: solid black;
+  border-color: black;
   border-width: 1px;
   border-radius: 0.8rem;
   background: white;
   margin: 0 0.5rem;
+  font-weight: 500;
 }
 
 .order-button {
@@ -437,12 +443,16 @@ h2 {
 }
 
 .modal-content {
+  display: flex;
+  flex-direction: column;
   text-align: center;
+  justify-content: center;
+  align-items: center;
   position: relative;
   padding: 20px;
   border-radius: 5px;
   width: 300px;
-  background: rgb(232, 232, 232);
+  background: rgb(242, 242, 242);
 }
 
 .modal-content h2 {
@@ -455,13 +465,13 @@ h2 {
   color: white;
   border: none;
   border-radius: 16px;
-  width: 6rem;
+  width: 8rem;
   height: 2rem;
 }
 
 .modal-content button:hover {
   background: #ea7900;
-  color: black;
+  color: white;
 }
 
 /*  ——--—— CLOSE BUTTON ——---—— */
@@ -591,31 +601,34 @@ footer-socials .social-icon {
 }
 
 /* ------- BREADCRUMB -------- */
-ul.breadcrumb {
-  padding: 10px 16px;
+.breadcrumb {
+  padding-top: 5rem;
   list-style: none;
 }
 
-ul.breadcrumb li {
+.breadcrumb li {
   display: inline;
   font-size: 18px;
   text-transform: capitalize;
 }
 
-ul.breadcrumb li + li:before {
+.breadcrumb li,
+.breadcrumb li:before {
   padding: 8px;
   color: black;
   content: "/\00a0";
 }
 
-ul.breadcrumb li a {
+.breadcrumb li a {
   color: #666;
   text-decoration: none;
 }
 
-ul.breadcrumb li a:hover {
+.breadcrumb li a:hover {
   color: black;
 }
+
+/* ------- ABOUT PAGE -------- */
 
 .about-page {
   display: flex;
@@ -631,8 +644,14 @@ ul.breadcrumb li a:hover {
   align-items: left;
   flex-wrap: wrap;
 
-  padding: 6rem 2rem 2rem 2rem;
+  padding: 6rem 2rem 6rem 2rem;
   max-width: 600px;
+}
+
+.about-socials {
+  display: flex;
+  gap: 1rem;
+  padding-top: 2rem;
 }
 
 /* ------- RESPONSIVE DESIGN -------- */
@@ -732,11 +751,12 @@ ul.breadcrumb li a:hover {
   }
 
   .p-4 {
-    padding-top: 15rem;
+    padding-top: 10rem;
   }
 
   .about-page-wrapper {
     align-items: center;
+    text-align: center;
   }
 
   .about-page {
@@ -756,17 +776,15 @@ ul.breadcrumb li a:hover {
 
   .cart-wrapper h2 {
     padding-top: 4rem;
- }
+  }
 
- .favorites-container {SS
-  padding-top: 6rem;
-}
+  .favorites-container {
+    padding-top: 6rem;
+  }
 
   .empty-favorites {
-    align-items: center; 
+    align-items: center;
     text-align: center;
     width: 60%;
   }
-
 }
-

@@ -1,14 +1,15 @@
 import { useState, useEffect } from "react";
 import { Link } from "react-router-dom";
 import { FaHeart, FaRegHeart } from "react-icons/fa";
-import PropTypes from "prop-types"; 
+import PropTypes from "prop-types";
 import useCart from "../hooks/useCart";
 
 const ProductCard = ({ product }) => {
   const { addToCart } = useCart();
-  const [isAdding, setIsAdding] = useState(false); 
+  const [isAdding, setIsAdding] = useState(false);
 
-  const getStoredFavorites = () => JSON.parse(localStorage.getItem("favorites")) || [];
+  const getStoredFavorites = () =>
+    JSON.parse(localStorage.getItem("favorites")) || [];
 
   const [isFavorite, setIsFavorite] = useState(() => {
     return getStoredFavorites().some((fav) => fav.id === product.id);
@@ -28,10 +29,10 @@ const ProductCard = ({ product }) => {
 
   const handleFavoriteClick = (e) => {
     e.preventDefault();
-  
+
     let storedFavorites = JSON.parse(localStorage.getItem("favorites")) || [];
     let favoritesMap = new Map(storedFavorites.map((fav) => [fav.id, fav]));
-  
+
     if (isFavorite) {
       favoritesMap.delete(product.id);
     } else {
@@ -43,27 +44,26 @@ const ProductCard = ({ product }) => {
       });
     }
 
-   
-    localStorage.setItem("favorites", JSON.stringify([...favoritesMap.values()]));
+    localStorage.setItem(
+      "favorites",
+      JSON.stringify([...favoritesMap.values()])
+    );
 
-   
     setIsFavorite(!isFavorite);
 
-    
     window.dispatchEvent(new Event("favoritesUpdated"));
   };
-  
 
   const handleAddToCart = (e) => {
     e.stopPropagation();
-    if (isAdding) return; 
+    if (isAdding) return;
     setIsAdding(true);
 
     addToCart(product);
 
     setTimeout(() => {
       setIsAdding(false);
-    }, 200); 
+    }, 200);
   };
 
   return (
@@ -75,13 +75,17 @@ const ProductCard = ({ product }) => {
         <div className="product-info">
           <p>{product.title}</p>
           <button className="favorite-button" onClick={handleFavoriteClick}>
-            {isFavorite ? <FaHeart className="text-red-500" /> : <FaRegHeart className="text-gray-500" />}
+            {isFavorite ? (
+              <FaHeart className="text-red-500" />
+            ) : (
+              <FaRegHeart className="text-gray-500" />
+            )}
           </button>
         </div>
       </Link>
-      <button 
-        className="add-to-cart-button" 
-        onClick={handleAddToCart} 
+      <button
+        className="add-to-cart-button"
+        onClick={handleAddToCart}
         disabled={isAdding}
       >
         {isAdding ? "Adding..." : "Add to cart"}

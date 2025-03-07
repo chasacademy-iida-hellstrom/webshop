@@ -7,7 +7,8 @@ const Favorites = () => {
 
   useEffect(() => {
     const syncFavorites = () => {
-      const storedFavorites = JSON.parse(localStorage.getItem("favorites")) || [];
+      const storedFavorites =
+        JSON.parse(localStorage.getItem("favorites")) || [];
       setFavorites(storedFavorites);
     };
 
@@ -27,8 +28,8 @@ const Favorites = () => {
           <div className="empty-favorites">
             <h1>Save your favorite items</h1>
             <p>
-              Want to save your favorite items? Just click on the heart icon found on the product image and it will show
-              up here.
+              Want to save your favorite items? Just click on the heart icon
+              found on the product image and it will show up here.
             </p>
             <Link to="/products" className="favorite-button">
               Browse now

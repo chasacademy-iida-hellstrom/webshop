@@ -24,7 +24,11 @@ const Category = ({ setCartCount }) => {
 
       <div className="product-list">
         {products.map((product) => (
-          <ProductCard key={product.id} product={product} setCartCount={setCartCount} />
+          <ProductCard
+            key={product.id}
+            product={product}
+            setCartCount={setCartCount}
+          />
         ))}
       </div>
     </div>

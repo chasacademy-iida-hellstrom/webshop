@@ -29,18 +29,32 @@ const Footer = () => {
           </ul>
         </div>
         <div className="footer-socials">
-          <a href="https://facebook.com" target="_blank" rel="noopener noreferrer">
+          <a
+            href="https://facebook.com"
+            target="_blank"
+            rel="noopener noreferrer"
+          >
             <FaFacebook className="social-icon" />
           </a>
-          <a href="https://instagram.com" target="_blank" rel="noopener noreferrer">
+          <a
+            href="https://instagram.com"
+            target="_blank"
+            rel="noopener noreferrer"
+          >
             <FaInstagram className="social-icon" />
           </a>
-          <a href="https://twitter.com" target="_blank" rel="noopener noreferrer">
+          <a
+            href="https://twitter.com"
+            target="_blank"
+            rel="noopener noreferrer"
+          >
             <FaTwitter className="social-icon" />
           </a>
         </div>
       </div>
-      <p className="footer-rights">&copy; 2025, All rights reserved by Minimart.</p>
+      <p className="footer-rights">
+        &copy; 2025, All rights reserved by Minimart.
+      </p>
     </footer>
   );
 };

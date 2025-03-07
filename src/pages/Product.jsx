@@ -11,7 +11,9 @@ const Product = () => {
   const product = products.find((p) => p.id.toString() === id);
 
   const storedFavorites = JSON.parse(localStorage.getItem("favorites")) || [];
-  const isProductFavorite = storedFavorites.some((fav) => fav.id === product?.id);
+  const isProductFavorite = storedFavorites.some(
+    (fav) => fav.id === product?.id
+  );
   const [isFavorite, setIsFavorite] = useState(isProductFavorite);
 
   const toggleFavorite = () => {
@@ -30,7 +32,9 @@ const Product = () => {
           });
         }
       } else {
-        updatedFavorites = updatedFavorites.filter((fav) => fav.id !== product.id);
+        updatedFavorites = updatedFavorites.filter(
+          (fav) => fav.id !== product.id
+        );
       }
 
       localStorage.setItem("favorites", JSON.stringify(updatedFavorites));
@@ -54,7 +58,10 @@ const Product = () => {
               {isFavorite ? <FaHeart /> : <FaRegHeart />}
             </button>
           </div>
-          <button className="add-button" onClick={() => addToCart && addToCart(product)}>
+          <button
+            className="add-button"
+            onClick={() => addToCart && addToCart(product)}
+          >
             Add to cart
           </button>
           <h3>Description</h3>
@@ -79,7 +86,10 @@ const Product = () => {
               {isFavorite ? <FaHeart /> : <FaRegHeart />}
             </button>
           </div>
-          <button className="add-button" onClick={() => addToCart && addToCart(product)}>
+          <button
+            className="add-button"
+            onClick={() => addToCart && addToCart(product)}
+          >
             Add to cart.
           </button>
           <h3>Description</h3>
